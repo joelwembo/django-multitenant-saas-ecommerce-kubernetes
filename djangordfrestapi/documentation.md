@@ -35,7 +35,7 @@ python manage.py createsuperuser --database=pools specify the database
 
 running
 
-python manage.py runserver 0.0.0.0:5000
+python manage.py runserver 0.0.0.0:8082
 
 Prepare Requirement doc for all tools and lib
 

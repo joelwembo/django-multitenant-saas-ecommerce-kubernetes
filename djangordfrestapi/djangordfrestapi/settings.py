@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
+    'blog_api',
 ]
 
 MIDDLEWARE = [
@@ -80,9 +82,9 @@ DATABASES = {
         'ENGINE': 'djongo', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'notes_database'         # Or path to database file if using sqlite3.
     },
-   'polls': {
+   'blog': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'sqlite3.db'                   # Or path to database file if using sqlite3.
+        'NAME': BASE_DIR / 'db.sqlite3',             # Or path to database file if using sqlite3.
     },
     'rdfDB': {                                # Database name
         'NAME': 'JWAppEngineDB',                  
