@@ -52,3 +52,6 @@ Managaning Multiple Database
 
 python manage.py makemigrations --database=core
 python manage.py migrate --database=core
+
+
+
