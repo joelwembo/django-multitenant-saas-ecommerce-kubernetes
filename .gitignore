@@ -1,3 +1,5 @@
 core/env
 djangordfrestapi/env
 env
+
+drwebapp/node_modules
