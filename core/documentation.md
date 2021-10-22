@@ -1,7 +1,11 @@
-python3 -m venv env source env/bin/activate # For Windows use env\Scripts\activate
+python3 -m venv env 
+
+source env/bin/activate   # For Windows use env\Scripts\activate
 
 Install Django and Django REST framework into the virtual environment
-pip install django pip install djangorestframework
+pip install django 
+
+pip install djangorestframework
 
 Set up a new project with a single application
 django-admin startproject tutorial . # Note the trailing '.' character cd tutorial django-admin startapp quickstart cd ..
@@ -20,7 +24,7 @@ The Env folder will propmt aside the path
 
 next step
 
-pip install django django-rest-framework djongo
+pip install django django-rest-framework djongo mysqlclient coverage
 
 django-admin startproject tutorial . # Note the trailing '.' character cd tutorial django-admin startapp quickstart
 
