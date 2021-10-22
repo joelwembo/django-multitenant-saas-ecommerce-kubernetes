@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Posts from './components/posts';
+import PostLoadingComponent from './components/postLoading';
+import axiosInstance from './axios';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+	const PostLoading = PostLoadingComponent(Posts);
+	const [appState, setAppState] = useState({
+		loading: true,
+		posts: null,
+	});
 
+	useEffect(() => {
+		axiosInstance.get().then((res) => {
+			const allPosts = res.data;
+			setAppState({ loading: false, posts: allPosts });
+			console.log(res.data);
+		});
+	}, [setAppState]);
+	return (
+		<div className="App">
+			<h1>Latest Posts</h1>
+			<PostLoading isLoading={appState.loading} posts={appState.posts} />
+		</div>
+	);
+}
 export default App;
