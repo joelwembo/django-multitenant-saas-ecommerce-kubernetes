@@ -43,6 +43,6 @@ step 1 pip freeze step 2 pip freeze > requirements.txt
 
 Managaning Multiple Database
 
-python manage.py migrate --database=polls
+python manage.py makemigrations --database=rdf
+python manage.py migrate --database=rdf
 
-python manage.py migrate --database=customers

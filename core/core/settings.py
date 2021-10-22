@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'blog_api',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -83,11 +84,11 @@ DATABASES = {
         'ENGINE': 'djongo', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'notes_database'         # Or path to database file if using sqlite3.
     },
-   'blog': {
+   'core': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': BASE_DIR / 'db.sqlite3',                  # Or path to database file if using sqlite3.
     },
-    'rdfDB': {                                # Database name
+    'rdf': {                                # Database name
         'NAME': 'JWAppEngineDB',                  
         'ENGINE': 'django.db.backends.mysql',     # the library in django
         'USER': 'root',
@@ -109,7 +110,7 @@ DATABASES = {
 
 }
 
-default_database = environ.get('DJANGO_DATABASE', 'blog')
+default_database = environ.get('DJANGO_DATABASE', 'core')
 DATABASES['default'] = DATABASES[default_database]
 
 
