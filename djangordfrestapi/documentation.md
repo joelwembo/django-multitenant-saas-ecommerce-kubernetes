@@ -43,15 +43,15 @@ step 1 pip freeze step 2 pip freeze > requirements.txt
 
 Managaning Multiple Database
 
-python manage.py makemigrations --database=rdf
-python manage.py migrate --database=rdf
+python3 manage.py makemigrations --database=rdf
+python3 manage.py migrate --database=rdf
 
 Running Test Using coverage
 
-pip install coverage
+pip3 install coverage
 coverage html
 coverage run manage.py test
 
 Cors Headers
 
-python -m pip install django-cors-headers
+python3 -m pip install django-cors-headers
