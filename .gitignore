@@ -8,4 +8,16 @@ core/db.sqlite3
 
 djangordfrestapi/db.sqlite3
 
+core/blog/__pycache__
+
+core/blog/migrations/
+
+core/blog_api/__pycache__/
+core/core/__pycache__/
+djangordfrestapi/blog/__pycache__/
+djangordfrestapi/blog/migrations/
+djangordfrestapi/blog_api/migrations/
+djangordfrestapi/blog_api/__pycache__/
+djangordfrestapi/__pycache__/
+djangordfrestapi/djangordfrestapi/__pycache__/
 
