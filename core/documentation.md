@@ -50,3 +50,14 @@ Managaning Multiple Database
 
 python manage.py makemigrations --database=core
 python manage.py migrate --database=core
+
+Running Test Using coverage
+
+pip install coverage
+coverage html
+coverage run manage.py test
+
+Cors Headers
+
+python -m pip install django-cors-headers
+

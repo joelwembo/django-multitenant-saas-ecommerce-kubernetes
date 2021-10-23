@@ -46,3 +46,12 @@ Managaning Multiple Database
 python manage.py makemigrations --database=rdf
 python manage.py migrate --database=rdf
 
+Running Test Using coverage
+
+pip install coverage
+coverage html
+coverage run manage.py test
+
+Cors Headers
+
+python -m pip install django-cors-headers
