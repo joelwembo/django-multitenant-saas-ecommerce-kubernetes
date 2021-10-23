@@ -55,3 +55,5 @@ coverage run manage.py test
 Cors Headers
 
 python3 -m pip install django-cors-headers
+
+Permissions and Custom Security Permissions
