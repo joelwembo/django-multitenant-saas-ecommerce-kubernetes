@@ -3,3 +3,9 @@ djangordfrestapi/env
 env
 
 drwebapp/node_modules
+
+core/db.sqlite3
+
+djangordfrestapi/db.sqlite3
+
+
