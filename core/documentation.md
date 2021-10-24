@@ -1,6 +1,7 @@
 python3 -m venv env 
 
-source env/bin/activate   # For Windows use env\Scripts\activate
+source env/bin/activate   
+# For Windows use env\Scripts\activate
 
 Install Django and Django REST framework into the virtual environment
 pip install django 
@@ -8,11 +9,12 @@ pip install django
 pip install djangorestframework
 
 Set up a new project with a single application
-django-admin startproject tutorial . # Note the trailing '.' character cd tutorial django-admin startapp quickstart cd ..
+django-admin startproject tutorial . 
+# Note the trailing '.' character cd tutorial django-admin startapp quickstart cd ..
 
-Virtual Environment
+# Virtual Environment
 
-For Windows
+# For Windows
 
 (Insde the Project folder at the root folder with manage.py) python -m pip install --user virtualenv virtualenv env
 
@@ -26,7 +28,9 @@ next step
 
 pip install django django-rest-framework djongo mysqlclient coverage
 
-django-admin startproject tutorial . # Note the trailing '.' character cd tutorial django-admin startapp quickstart
+django-admin startproject tutorial . 
+
+# Note the trailing '.' character cd tutorial django-admin startapp quickstart
 
 Data migation
 python manage.py makemigrations python manage.py migrate
@@ -45,7 +49,7 @@ Prepare Requirement doc for all tools and lib
 
 step 1 pip freeze step 2 pip freeze > requirements.txt
 
-Managaning Multiple Database
+# Managaning Multiple Database
 
 
 python manage.py makemigrations --database=core
@@ -57,11 +61,11 @@ pip install coverage
 coverage html
 coverage run manage.py test
 
-Cors Headers
+# Cors Headers
 
 python -m pip install django-cors-headers
 
 
-Permissions and Custom Security Permissions
+# Permissions and Custom Security Permissions
 
 
