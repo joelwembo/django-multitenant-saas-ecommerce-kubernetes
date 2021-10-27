@@ -18,9 +18,11 @@ django-admin startproject tutorial .
 
 (Insde the Project folder at the root folder with manage.py) python -m pip install --user virtualenv virtualenv env
 
-for Lunix source env/bin/activate
+# for Lunix 
 
-For Windows env\Scripts\activate
+source env/bin/activate
+
+# For Windows env\Scripts\activate
 
 The Env folder will propmt aside the path
 
