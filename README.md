@@ -16,7 +16,7 @@ Virtual Environment
 
 For Windows
 
-(Insde the Project folder at the root folder with manage.py) python -m pip install --user virtualenv virtualenv env
+(Project folder at the root folder with manage.py) python -m pip install --user virtualenv virtualenv env
 
 for Lunix source env/bin/activate
 
