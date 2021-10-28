@@ -45,7 +45,9 @@ python manage.py runserver 0.0.0.0:8081
 
 Prepare Requirement doc for all tools and lib
 
-step 1 pip freeze step 2 pip freeze > requirements.txt
+# step 1 pip freeze 
+
+# step 2 pip freeze > requirements.txt
 
 Managaning Multiple Database
 
