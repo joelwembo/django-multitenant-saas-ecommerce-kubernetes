@@ -24,7 +24,7 @@ pip install django django-rest-framework djongo
 
 django-admin startproject tutorial . # Note the trailing '.' character cd tutorial django-admin startapp quickstart
 
-Data migation
+# Data migation
 python manage.py makemigrations python manage.py migrate
 
 Creating an admin user
@@ -41,7 +41,7 @@ Prepare Requirement doc for all tools and lib
 
 step 1 pip freeze step 2 pip freeze > requirements.txt
 
-Managaning Multiple Database
+# Managaning Multiple Database
 
 python3 manage.py makemigrations --database=rdf
 python3 manage.py migrate --database=rdf
@@ -52,7 +52,7 @@ pip3 install coverage
 coverage html
 coverage run manage.py test
 
-Cors Headers
+# Cors Headers
 
 python3 -m pip install django-cors-headers
 
