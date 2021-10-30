@@ -29,7 +29,7 @@ python manage.py makemigrations python manage.py migrate
 
 Creating an admin user
 
-python manage.py createsuperuser or
+python manage.py createsuperuser 
 
 python manage.py createsuperuser --database=pools specify the database
 
