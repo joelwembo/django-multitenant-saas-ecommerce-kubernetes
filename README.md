@@ -52,8 +52,8 @@ Prepare Requirement doc for all tools and lib
 Managaning Multiple Database
 
 
-python manage.py makemigrations --database=
-python manage.py migrate --database=
+python manage.py makemigrations --database=core
+python manage.py migrate --database=core
 
 
 

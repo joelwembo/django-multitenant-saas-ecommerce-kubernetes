@@ -8,7 +8,7 @@ django-admin startproject tutorial . # Note the trailing '.' character cd tutori
 
 Virtual Environment
 
-For Windows
+For Windows 10/7
 
 (Insde the Project folder at the root folder with manage.py) python -m pip install --user virtualenv virtualenv env
 
