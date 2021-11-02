@@ -20,7 +20,9 @@ pip install -r requirement.txt
 
 # For Windows
 
-(Insde the Project folder at the root folder with manage.py) python -m pip install --user virtualenv virtualenv env
+(Insde the Project folder at the root folder with manage.py) 
+
+python -m pip install --user virtualenv virtualenv env
 
 # for Lunix 
 
@@ -38,16 +40,15 @@ django-admin startproject tutorial .
 
 # Note the trailing '.' character cd tutorial django-admin startapp quickstart
 
-Data migation
+# Data migation
 python manage.py makemigrations python manage.py migrate
 
-Creating an admin user
+# Creating an admin user
 
 python manage.py createsuperuser or
 
 python manage.py createsuperuser --database=pools specify the database
 
-running
 
 python manage.py runserver 0.0.0.0:8081 or  python3 manage.py runserver 0.0.0.0:8082 
 
@@ -71,11 +72,7 @@ coverage run manage.py test
 
 python -m pip install django-cors-headers
 
-
 # Permissions and Custom Security Permissions
-
-
-
 
 # DEACTIVATE ENV
 
