@@ -10,6 +10,10 @@ pip install djangorestframework
 
 Set up a new project with a single application
 django-admin startproject tutorial . 
+# Installing all pip require library
+
+pip install -r requirement.txt
+
 # Note the trailing '.' character cd tutorial django-admin startapp quickstart cd ..
 
 # Virtual Environment
