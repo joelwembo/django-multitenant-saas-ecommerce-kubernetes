@@ -91,9 +91,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',             # Or path to database file if using sqlite3.
     },
     'rdf': {                                # Database name
-        'NAME': 'JWAppEngineDB',                  
+        'NAME': 'jwap_JWAppeEngineDB',                  
         'ENGINE': 'django.db.backends.mysql',     # the library in django
-        'USER': 'root',
+        'USER': 'jwap_root',
         'PASSWORD': 'Joel#_@7722JW',               # the password
         'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.                          # the port may not be required
     },

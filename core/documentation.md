@@ -58,8 +58,8 @@ step 1 pip freeze step 2 pip freeze > requirements.txt
 # Managaning Multiple Database
 
 
-python3 manage.py makemigrations --database=core
-python3 manage.py migrate --database=core
+python manage.py makemigrations --database=rdf
+python manage.py migrate --database=rdf
 
 Running Test Using coverage
 
