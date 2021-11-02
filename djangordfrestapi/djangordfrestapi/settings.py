@@ -95,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',     # the library in django
         'USER': 'jwap_root',
         'PASSWORD': 'Joel#_@7722JW',               # the password
-        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.                          # the port may not be required
+        'HOST': '151.106.113.214',                      # Set to empty string for localhost. Not used with sqlite3.                          # the port may not be required
     },
     'replica1': {
         'NAME': 'replica1_name',

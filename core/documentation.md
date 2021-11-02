@@ -75,3 +75,8 @@ python -m pip install django-cors-headers
 # Permissions and Custom Security Permissions
 
 
+
+
+# DEACTIVATE ENV
+
+EXIT 
