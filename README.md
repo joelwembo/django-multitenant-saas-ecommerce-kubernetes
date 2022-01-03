@@ -1,4 +1,4 @@
-# django-website-rest-database
+# Django Rest API and Multiple Databases
 
 python3 -m venv env 
 
