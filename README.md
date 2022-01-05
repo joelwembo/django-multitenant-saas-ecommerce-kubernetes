@@ -2,6 +2,7 @@
 
 python3 -m venv env 
 
+# Env Setup
 source env/bin/activate   # For Windows use env\Scripts\activate
 
 Install Django and Django REST framework into the virtual environment
