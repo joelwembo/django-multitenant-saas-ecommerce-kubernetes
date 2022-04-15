@@ -25,7 +25,7 @@ For Windows env\Scripts\activate
 
 The Env folder will propmt aside the path
 
-next step
+#next step
 
 pip install django django-rest-framework djongo mysqlclient coverage
 
@@ -40,7 +40,7 @@ python manage.py createsuperuser or
 
 python manage.py createsuperuser --database=pools specify the database
 
-running
+#running
 
 python manage.py runserver 0.0.0.0:8081
 
@@ -50,7 +50,7 @@ Prepare Requirement doc for all tools and lib
 
 # step 2 pip freeze > requirements.txt
 
-Managaning Multiple Database
+# Managaning Multiple Database
 
 
 python manage.py makemigrations --database=core
