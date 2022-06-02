@@ -140,5 +140,17 @@ Example usage:
 
 django-admin compilemessages --ignore=cache --ignore=outdated/*/locale
 
+# Using Docker Container
 
+$ docker-compose up -d --build
+If you refresh the Django welcome page at http://127.0.0.1:8000/ it should work which means Django has successfully connected to PostgreSQL via Docker.
 
+Running commands within Docker is a little different than in a traditional Django project. For example, to migrate the new PostgreSQL database running in Docker execute the following command:
+
+$ docker-compose exec web python manage.py migrate
+If you wanted to run createsuperuser you'd also prefix it with docker-compose exec web... so:
+
+$ docker-compose exec web python manage.py createsuperuser
+And so on. When you're done, don't forget to close down your Docker container since it can consume a lot of computer memory.
+
+$ docker-compose down
