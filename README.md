@@ -78,7 +78,7 @@ The output follows the schema described in PEP 440:
 Displaying debug output¶
 Use --verbosity, where it is supported, to specify the amount of notification and debug information that django-admin prints to the console.
 
-Available commands¶
+# Available commands¶
 check¶
 django-admin check [app_label [app_label ...]]¶
 Uses the system check framework to inspect the entire Django project for common problems.
