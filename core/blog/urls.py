@@ -1,6 +1,8 @@
 from django.urls import path
 from django.views.generic import TemplateView
 
+# Url and addressing
+
 app_name = 'blog'
 
 urlpatterns = [
