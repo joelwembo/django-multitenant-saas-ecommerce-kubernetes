@@ -4,7 +4,7 @@ from django.utils import timezone
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=160)
 
     def __str__(self):
         return self.name
@@ -24,7 +24,6 @@ class Post(models.Model):
     category = models.ForeignKey(
         Category, on_delete=models.PROTECT, default=1)
     title = models.CharField(max_length=250)
-    intro = models.CharField(max_length=250)
     excerpt = models.TextField(null=True)
     link = models.TextField(null=True)
     content = models.TextField()

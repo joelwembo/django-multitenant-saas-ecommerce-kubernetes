@@ -13,7 +13,8 @@ class PostUserWritePermission(BasePermission):
             return True
 
         return obj.author == request.user
-
+    def fsdfjksdf(self, name):
+        return Post;
 
 class PostList(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]

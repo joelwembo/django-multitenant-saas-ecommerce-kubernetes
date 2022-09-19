@@ -61,3 +61,6 @@ class PostTests(APITestCase):
             }, format='json')
         print(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+def addition(x , y):
+    return x + y

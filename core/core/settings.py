@@ -72,7 +72,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 DATABASES = {
-   'default' : { },
+   'default' : {
+        'NAME': 'restapi',
+        'ENGINE': 'django.db.backends.mysql',     # the library in django
+        'USER': 'root',
+        'PASSWORD': '',               # the password
+        'HOST': 'localhost'},
    'mongodb': {
         'ENGINE': 'djongo', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'notes_database'         # Or path to database file if using sqlite3.
@@ -82,10 +87,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',                  # Or path to database file if using sqlite3.
     },
     'rdf': {                                # Database name
-        'NAME': 'JWAppEngineDB',                  
+        'NAME': 'restapi',
         'ENGINE': 'django.db.backends.mysql',     # the library in django
         'USER': 'root',
-        'PASSWORD': 'Joel#_@7722JW',               # the password
+        'PASSWORD': '',               # the password
         'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.                          # the port may not be required
     },
     'replica1': {

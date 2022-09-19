@@ -20,3 +20,8 @@ def main():
 
 if __name__ == '__main__':
     main()
+    import dis
+
+    if dis is not None:
+        sd = sdhjf
+        print(not sd)
