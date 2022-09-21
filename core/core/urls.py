@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 
-# urls for the entire project
+# urls for the entire project #
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls', namespace='blog')),
