@@ -154,3 +154,9 @@ $ docker-compose exec web python manage.py createsuperuser
 And so on. When you're done, don't forget to close down your Docker container since it can consume a lot of computer memory.
 
 $ docker-compose down
+
+# Loading Data
+
+Data Inside Fixtures Folder
+
+$ python manage.py loaddata restaurants

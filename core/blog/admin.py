@@ -9,3 +9,4 @@ class AuthorAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Category)
+admin.site.register(models.Employee)
