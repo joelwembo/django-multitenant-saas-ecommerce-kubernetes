@@ -27,6 +27,7 @@ class Post(models.Model):
     excerpt = models.TextField(null=True)
     link = models.TextField(null=True)
     content = models.TextField()
+    mypost = models.TextField(default="sdfhjksfhsdf")
     slug = models.SlugField(max_length=250, unique_for_date='published')
     published = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(
