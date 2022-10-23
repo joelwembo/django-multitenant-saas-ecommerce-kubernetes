@@ -15,7 +15,7 @@ django-admin startproject tutorial . # Note the trailing '.' character cd tutori
 
 Virtual Environment
 
-#For Windows
+# For Windows
 
 (Project folder at the root folder with manage.py) python -m pip install --user virtualenv virtualenv env
 
@@ -25,13 +25,14 @@ For Windows env\Scripts\activate
 
 The Env folder will propmt aside the path
 
-#next step
+# Step 1
 
 pip install django django-rest-framework djongo mysqlclient coverage
 
+# Step 1
 django-admin startproject tutorial . # Note the trailing '.' character cd tutorial django-admin startapp quickstart
 
-Data migation
+# Data migration
 python manage.py makemigrations python manage.py migrate
 
 Creating an admin user
@@ -40,23 +41,22 @@ python manage.py createsuperuser or
 
 python manage.py createsuperuser --database=pools specify the database
 
-#running
+#Compiling
 
 python manage.py runserver 0.0.0.0:8081
 
-Prepare Requirement doc for all tools and lib
+# Prepare Requirement doc for all tools and lib
 
-# step 1 pip freeze 
+ step 1 pip freeze 
 
-# step 2 pip freeze > requirements.txt
+ step 2 pip freeze > requirements.txt
 
 # Managaning Multiple Database
-
 
 python manage.py makemigrations --database=core
 python manage.py migrate --database=core
 
-django-admin help¶
+# django-admin help¶
 Run django-admin help to display usage information and a list of the commands provided by each application.
 
 Run django-admin help --commands to display a list of all available commands.
