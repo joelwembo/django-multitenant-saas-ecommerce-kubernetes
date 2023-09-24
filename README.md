@@ -39,7 +39,7 @@ The Env folder will propmt aside the path
 
 
 # Postgres DB Connection
-
+''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -50,7 +50,7 @@ DATABASES = {
         'PORT': 5432,
     }
 }
-
+''
 # Docker Database Settings
 
 # Database postgres Docker 
