@@ -1,4 +1,5 @@
 # Django Rest API , Kubernetes, Jenkins, Github Actions and Multiple Databases
+![image](https://github.com/joelwembo/Django-restful-api-postgres-kubernetes-poc/assets/19718580/d00f0e7d-050d-454c-8d6b-f8890eb1f506)
 
 Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers
 python3 -m venv env 
@@ -59,3 +60,6 @@ python manage.py runserver 0.0.0.0:8081
 Data Inside Fixtures Folder
 
 $ python manage.py loaddata restaurants
+
+![image](https://github.com/joelwembo/Django-restful-api-postgres-kubernetes-poc/assets/19718580/7b4dc37b-3fc0-462f-a44a-28febddcf716)
+
