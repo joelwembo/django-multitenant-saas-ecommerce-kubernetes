@@ -1,0 +1,96 @@
+version: "3.9"
+services:
+  web:
+    image: django_app
+    container_name: cloudapp-django-web
+    env_file: .env
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command:
+      - /bin/sh
+      - -c
+      - |
+        python manage.py migrate
+        python manage.py runserver 0.0.0.0:8585
+        # gunicorn fintechengine.wsgi:application --bind 0.0.0.0:8585
+        
+    ports:
+      - "8585:8585"
+    networks:
+    #   - db_network
+      - web_network
+    volumes:
+      - .:/app  
+    depends_on:
+      - cloudapp-django-postgresdb
+      # - redis 
+  celery:
+    container_name: cloudapp-django-celery
+    build: .
+    command: celery -A fintechengine worker -l info
+    volumes:
+      - .:/django_app
+    environment:
+      - DEBUG=0
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+      - CELERY_BROKER_URL="redis://redis:6379/0"
+      - CELERY_RESULT_BACKEND="redis://redis:6379/0"
+      - broker_connection_retry_on_startup="True"
+    depends_on:
+      - redis
+  redis:
+      image: "redis:alpine"
+      container_name: cloudapp-django-redis
+      ports:
+        - '6379:6379'
+      expose:
+        - "6379"  
+      volumes:
+          - redisDB:/data
+      # networks:
+      #     - db_network  #
+  cloudapp-django-postgresdb:
+    restart: always
+    image: postgres:latest
+    container_name: cloudapp-django-postgresdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=fintech_enterpriseDB
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PORT=5432
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+    expose:
+       - "5432"
+    ports:
+       - "5432:5432"
+    # networks:
+    #    - data_network   
+  pgadmin:
+        restart: always
+        image: dpage/pgadmin4
+        container_name: cloudapp-fintech-pgadmin 
+        depends_on:
+          - cloudapp-django-postgresdb
+        ports:
+          - "5051:80"
+        environment:
+          PGADMIN_DEFAULT_EMAIL: joelotepawembo@gmail.com
+          PGADMIN_DEFAULT_PASSWORD: postgres   
+          PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'False'
+          PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: 'False'
+            
+
+networks:
+#   db_network:
+#     driver: bridge
+  web_network:
+    driver: bridge
+#   data_network:
+#     driver: overlay
+volumes:
+  pgdata:
+  redisDB:

@@ -1,28 +1,38 @@
-core/env
-djangordfrestapi/env
-env
 
-drwebapp/node_modules
-core/db.sqlite3
-core/db.sqlite3
-djangordfrestapi/db.sqlite3
+*.pyc
+*.pyo
+*.mo
+*.db
+*.css.map
+*.egg-info
+*.sql.gz
+.idea/workspace.xml
+.DS_Store
+.git/
+.idea
+.idea/workspace.xml
+.DS_Store
+__pycache__/
+venv/
+./venv
+# javascript
+package-lock.json
+staticfiles/*
+!staticfiles/.gitkeep
+.vscode/symbols.json
+apps/static/assets/node_modules
+apps/static/assets/yarn.lock
+apps/static/assets/.temp
+*.py[cod]
+# tests and coverage
+*.pytest_cache
+.coverage
+# database & logs
+*.sqlite3
+*.log
 
-djangordfrestapi/db.sqlite3
-
-core/blog/__pycache__
-
-core/blog/migrations/
-core/blog_api/migrations/
-
-core/blog_api/__pycache__/
-core/core/__pycache__/
-djangordfrestapi/blog/__pycache__/
-djangordfrestapi/blog/migrations/
-djangordfrestapi/blog_api/migrations/
-djangordfrestapi/blog_api/__pycache__/
-djangordfrestapi/__pycache__/
-djangordfrestapi/djangordfrestapi/__pycache__/
-
-.vs
-vs
-
+data
+celerybeat-schedule.bak
+celerybeat-schedule.dat
+celerybeat-schedule.dir
+celery.log
