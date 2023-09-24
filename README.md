@@ -1,15 +1,15 @@
 # Django Rest API , Kubernetes, Jenkins, Github Actions and Multiple Databases
 ![image](https://github.com/joelwembo/Django-restful-api-postgres-kubernetes-poc/assets/19718580/d00f0e7d-050d-454c-8d6b-f8890eb1f506)
 
-Required Tools
+# Required Tools
 
-Docker
-Docker Compose
-Postgres
-Redis
-Celery
-Kubernetes
-Ansible
+- Docker
+- Docker Compose
+- Postgres
+- Redis
+- Celery
+- Kubernetes
+- Ansible
 
 Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers
 python3 -m venv env 
