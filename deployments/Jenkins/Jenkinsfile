@@ -1,0 +1,34 @@
+pipeline{
+    agent any
+    stages {
+      stage('Build'){ 
+        steps  {
+                bat '''
+                    docker-compose down && docker-compose build --no-cache
+                '''
+                }
+            }
+            // stage('Setup Gunicorn Setup'){
+            //     steps {
+            //         sh '''
+            //         chmod +x gunicorn.sh
+            //         ./gunicorn.sh
+            //         '''
+            //     }
+            // }
+            stage('Run the Application'){
+                steps {
+                    bat '''
+                docker-compose up -d
+                    '''
+                }
+            }
+            stage('Execute Manuel Tests'){
+                steps {
+                    bat '''
+                        echo 'Migration Operation Completed , Please Check the logs status'
+                    '''
+                }
+            }
+    }
+}

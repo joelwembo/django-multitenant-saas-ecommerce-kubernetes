@@ -1,0 +1,11 @@
+
+# Publisher Key
+
+pk_test_51LXmPhI1Paqp8Qt3C3NtZ29YhrCvQ3tZoeYQpGkPTr1sbrjNnasQN8eQyoKAzR2EbEam9rnNvo8luTz7YcrTxLmk00uX7Td0wF
+
+# Secret Key
+
+sk_test_51LXmPhI1Paqp8Qt3Tca8GhuEe1FI2bKbkscog7ORAiGRL00QsAKVgMaSwQ8RXUnM4Y3GwVC2BHLdZwoswI8dY0ax00GBNzBHsK
+
+rosy-relish-gained-beckon
+

@@ -1,0 +1,1 @@
+docker exec -it web_cloudapp_django python manage.py shell

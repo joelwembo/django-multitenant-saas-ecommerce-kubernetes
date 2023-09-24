@@ -1,0 +1,35 @@
+Part#1
+docker build --tag django_fintech_enterprise_container .
+docker run --publish 8000:8000 python-django
+Part#2
+docker-compose build
+docker-compose run --rm app django-admin startproject core .
+docker-compose up
+Part#3
+docker-compose build
+docker-compose run --rm app django-admin startproject core .
+docker-compose up
+docker exec -it django_container /bin/bash
+
+
+
+or
+
+1 .
+docker-compose -f docker-compose-production.yml build
+
+2
+
+docker-compose -f docker-compose-production.yml up
+
+
+# Using Docker File
+
+
+Step 1
+
+docker build -f Dockerfile -t django_fintech_enterprise_container .
+
+Step 2
+
+docker run -it -p 80:80 django_fintech_enterprise_container

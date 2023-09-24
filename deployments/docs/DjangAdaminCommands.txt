@@ -1,0 +1,17 @@
+# Initialize database
+python manage.py migrate
+
+# Prompts for username and password
+python manage.py createsuperuser
+
+# Run application on default port
+
+python manage.py runserver
+
+# Create a new app within a project
+python3 manage.py startapp api_app
+
+
+# Collect python django requirements instaltions
+
+pip freeze > requirements.txt
