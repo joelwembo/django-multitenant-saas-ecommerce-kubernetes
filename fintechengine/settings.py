@@ -5,6 +5,7 @@ from unipath import Path
 from dotenv import load_dotenv
 import datetime
 
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'. #
@@ -15,13 +16,17 @@ CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default=os.getenv("DJANGO_SECRET_KEY"))
+SECRET_KEY = config('SECRET_KEY', default='54g6s%qjfnhbpw0zeoei=$!her*y(p%!&84rs$4l85io')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
 # ALLOWED_HOSTS = [os.getenv("ALLOWED_PORTS")]
-ALLOWED_HOSTS = ['3.0.55.190', '0.0.0.0', '10.162.0.2', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['localhost' , '127.0.0.1', '0.0.0.0']
+
+BACKEND_DOMAIN = 'http://127.0.0.1:8585/'
+PAYMENT_SUCCESS_URL = 'http://127.0.0.1:8585/api/v1/products/success/'
+PAYMENT_CANCEL_URL = 'http://127.0.0.1:8585/api/v1/products/cancel/'
 
 CORS_ORIGIN_ALLOW_ALL = True
 # Application definition # # # # #
@@ -35,15 +40,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     "corsheaders",
+    'graphene_django',
     'django_celery_results',
      'django_celery_beat',
     'django_filters',
     'drf_yasg',
+    'apps.home',
     'apps.snippets',
     'apps.users',
-    'apps.node_api',
     'apps.finances',
-    'apps.payments'
+    'apps.payments',
+    'apps.products'
 ]
 
 MIDDLEWARE = [
@@ -100,7 +107,7 @@ DATABASES = {
         'NAME': os.environ.get("POSTGRES_NAME", "postgres"),
         'USER': os.environ.get("POSTGRES_USER", "postgres"),
         'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "postgres"),
-        'HOST': os.environ.get("POSTGRES_HOST", "host.docker.internal"),
+        'HOST': os.environ.get("POSTGRES_HOST", "localhost"),
         'PORT': int(os.environ.get("POSTGRES_PORT", "5432")),
     }
 }
@@ -140,6 +147,9 @@ DATABASES = {
 #         'PORT': '3306',
 #     }
 # }
+
+#Connect to Neo4j Database
+# config.DATABASE_URL = 'bolt://neo4j+s://f89c638e.databases.neo4j.io:7687'
 
 # Password validation # #
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -210,6 +220,9 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(CORE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -264,7 +277,7 @@ BROKER_CHANNEL_ERROR_RETRY=True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = ""
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = "notifyprodtestemail1@gmail.com"
+EMAIL_HOST_PASSWORD = 'Michael@5151'
 EMAIL_PORT = 587
 

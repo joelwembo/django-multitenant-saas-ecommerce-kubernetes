@@ -12,7 +12,7 @@
 - Ansible
 
 Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers
-python3 -m venv env 
+python3 -m venv venv 
 
 # create a new virtual environemnt
 source env/bin/activate   # For Windows use env\Scripts\activate

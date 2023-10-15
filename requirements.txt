@@ -63,3 +63,8 @@ django-filter
 gunicorn==21.2.0
 pytest
 pytest-django
+graphene_django
+requests
+# django-neomodel==0.0.4
+# neo4j-driver==1.2.1
+# neomodel==3.2.5
