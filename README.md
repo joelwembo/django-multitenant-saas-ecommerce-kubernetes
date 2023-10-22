@@ -37,7 +37,7 @@ http://127.0.0.1:8585/graphql
 
 # Extensions
 python manage.py show_urls
-python manage.py graph_models finances -a -o finances_models.png
+python manage.py graph_models finances -a -o finances_models-1.png
 
 # wagtail
 
