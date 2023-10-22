@@ -15,7 +15,7 @@ source ./venv/Scripts/deactivate
 
 bash ./server-entrypoint.sh
 
-# Docke
+# Docker
 
 bash ./run.sh
 
@@ -32,6 +32,7 @@ http://127.0.0.1:8585/data-browser/
 
 
 # GraphQL
+![Alt text](image.png)
 http://127.0.0.1:8585/graphql
 
 # Extensions
