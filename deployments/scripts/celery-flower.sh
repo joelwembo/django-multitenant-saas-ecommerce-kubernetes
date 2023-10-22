@@ -1,1 +1,1 @@
-docker exec -it web_cloudapp_django celery -A fintechengine flower --port=5555
+docker exec -it cloudapp-django-web celery -A fintechengine flower --port=5555

@@ -17,7 +17,7 @@ jobs:
         working-directory: .
     env:
       DJANGO_SECRET_KEY: 54g6s%qjfnhbpw0zeoei=$!her*y(p%!&84rs$4l85io
-      POSTGRES_DB: fintech_enterpriseDB
+      POSTGRES_DB: DB1
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_HOST: localhost

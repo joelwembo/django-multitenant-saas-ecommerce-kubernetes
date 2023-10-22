@@ -27,6 +27,7 @@ services:
       - cloudapp-django-postgresdb
       # - redis 
   celery:
+    container_name: cloudapp-django-celery
     build: .
     command: celery -A fintechengine worker -l info
     volumes:
@@ -34,12 +35,11 @@ services:
     environment:
       - DEBUG=0
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
-      - CELERY_BROKER_URL = "redis://redis:6379/0"
-      - CELERY_RESULT_BACKEND = "redis://redis:6379/0"
-      - broker_connection_retry_on_startup = "True"
-    # depends_on:
-    #   - web
-    #   # - redis 
+      - CELERY_BROKER_URL="redis://redis:6379/0"
+      - CELERY_RESULT_BACKEND="redis://redis:6379/0"
+      - broker_connection_retry_on_startup="True"
+    depends_on:
+      - redis
   redis:
       image: "redis:alpine"
       container_name: cloudapp-django-redis
@@ -58,7 +58,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=fintech_enterpriseDB
+      - POSTGRES_DB=DB1
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_PORT=5432
@@ -78,7 +78,7 @@ services:
         ports:
           - "5051:80"
         environment:
-          PGADMIN_DEFAULT_EMAIL: joelotepawembo@gmail.com
+          PGADMIN_DEFAULT_EMAIL: mail@djangoapp.com
           PGADMIN_DEFAULT_PASSWORD: postgres   
           PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'False'
           PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: 'False'

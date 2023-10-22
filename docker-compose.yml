@@ -26,6 +26,14 @@ services:
     depends_on:
       - cloudapp-django-postgresdb
       # - redis 
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '0.001'
+    #       memory: 50M
+    #     reservations:
+    #       cpus: '0.0001'
+    #       memory: 20M 
   celery:
     container_name: cloudapp-django-celery
     build: .
@@ -52,13 +60,13 @@ services:
       # networks:
       #     - db_network  #
   cloudapp-django-postgresdb:
-    restart: always
+    # restart: always
     image: postgres:latest
     container_name: cloudapp-django-postgresdb
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=fintech_enterpriseDB
+      - POSTGRES_DB=DB1
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_PORT=5432
@@ -70,7 +78,7 @@ services:
     # networks:
     #    - data_network   
   pgadmin:
-        restart: always
+        # restart: always
         image: dpage/pgadmin4
         container_name: cloudapp-fintech-pgadmin 
         depends_on:
@@ -78,7 +86,7 @@ services:
         ports:
           - "5051:80"
         environment:
-          PGADMIN_DEFAULT_EMAIL: joelotepawembo@gmail.com
+          PGADMIN_DEFAULT_EMAIL: mail@djangoapp.com
           PGADMIN_DEFAULT_PASSWORD: postgres   
           PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'False'
           PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: 'False'
@@ -94,3 +102,5 @@ networks:
 volumes:
   pgdata:
   redisDB:
+
+  

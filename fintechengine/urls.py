@@ -53,7 +53,7 @@ schema_view = get_schema_view(
         default_version='v1',
         description="cloudapp API built by Joel Otepa Wembo",
         terms_of_service="https://cloudapp.io/policies/terms/",
-        contact=openapi.Contact(email="joelotepawembo@gmail.com"),
+        contact=openapi.Contact(email="mail@djangoapp.com"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,
@@ -76,6 +76,9 @@ urlpatterns = [
         name="create-checkout-session",
     ),
     path("graphql", csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
+    path("__debug__/", include("debug_toolbar.urls")),
+    path("data-browser/", include("data_browser.urls")),
+    # path('ledger/', include('django_ledger.urls', namespace='django_ledger')),
  
     re_path(r'^swagger(?P<format>\.json|\.yaml)$',
             schema_view.without_ui(cache_timeout=0), name='schema-json'),
@@ -83,6 +86,7 @@ urlpatterns = [
             cache_timeout=0), name='schema-swagger-ui'),
     re_path(r'^redoc/$', schema_view.with_ui('redoc',
             cache_timeout=0), name='schema-redoc'),   
+    
 ]
 
 # Media Assets

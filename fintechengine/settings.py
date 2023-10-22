@@ -1,11 +1,10 @@
 import os
 from pathlib import Path
+import socket 
 from decouple import config
 from unipath import Path
 from dotenv import load_dotenv
 import datetime
-
-
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'. #
@@ -16,13 +15,18 @@ CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='54g6s%qjfnhbpw0zeoei=$!her*y(p%!&84rs$4l85io')
+# SECRET_KEY = config('SECRET_KEY', default='54g6s%qjfnhbpw0zeoei=$!her*y(p%!&84rs$4l85io')
+SECRET_KEY = config('SECRET_KEY', default = os.environ.get("DJANGO_SECRET_KEY", "54g6s%qjfnhbpw0zeoei=$!her*y(p%!&84rs$4l85io"))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
+# if DEBUG:
+#     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+#     INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["127.0.0.1", "10.0.2.2", "host.docker.internal"]
+    
 # ALLOWED_HOSTS = [os.getenv("ALLOWED_PORTS")]
-ALLOWED_HOSTS = ['localhost' , '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['localhost' , '127.0.0.1', '0.0.0.0', 'host.docker.internal']
 
 BACKEND_DOMAIN = 'http://127.0.0.1:8585/'
 PAYMENT_SUCCESS_URL = 'http://127.0.0.1:8585/api/v1/products/success/'
@@ -38,19 +42,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
+    'django_extensions',
     'rest_framework',
     "corsheaders",
     'graphene_django',
     'django_celery_results',
-     'django_celery_beat',
+    'django_celery_beat',
     'django_filters',
     'drf_yasg',
+    'widget_tweaks',
     'apps.home',
     'apps.snippets',
     'apps.users',
     'apps.finances',
     'apps.payments',
-    'apps.products'
+    'apps.products',
+    'data_browser',
+    # 'django-ledger',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +71,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "corsheaders.middleware.CorsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware"
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+    "localhost",
+    "host.docker.internal"
 ]
 
 ROOT_URLCONF = 'fintechengine.urls'
@@ -104,7 +120,7 @@ WSGI_APPLICATION = 'fintechengine.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get("POSTGRES_NAME", "postgres"),
+        'NAME': os.environ.get("POSTGRES_NAME", "DB1"),
         'USER': os.environ.get("POSTGRES_USER", "postgres"),
         'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "postgres"),
         'HOST': os.environ.get("POSTGRES_HOST", "localhost"),
@@ -128,7 +144,7 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'fintech_enterprisedb',
+#         'NAME': 'DB1',
 #         'USER': 'root',
 #         'HOST': 'localhost',
 #         'PASSWORD': '',
@@ -140,7 +156,7 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'fintech_enterpriseDB',
+#         'NAME': 'DB1',
 #         'USER': 'root',
 #         'HOST': 'localhost',
 #         'PASSWORD': '',
@@ -197,7 +213,7 @@ SIMPLE_JWT = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
-    "http://localhost:3000",
+    "http://localhost:3000"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -223,6 +239,11 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+IMAGES_DIR = os.path.join(MEDIA_ROOT, 'images')
+
+if not os.path.exists(MEDIA_ROOT) or not os.path.exists(IMAGES_DIR):
+    os.makedirs(IMAGES_DIR)
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -232,38 +253,43 @@ AUTH_PROFILE_MODULE = 'auth.User'
 
 AUTH_USER_MODEL = 'auth.User'
 
-# Extra places for collectstatic to find static files.
+# Extra places for collectstatic to find static files. #
 STATICFILES_DIRS = (
     os.path.join(CORE_DIR, 'apps/static'),
 )
 
 
 MEMUSAGE_ENABLED = True
-MEMUSAGE_LIMIT_MB = 1024
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': 'redis://redis:6379/1',  # Use Redis service hostname
-#         'OPTIONS': {
-#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#         }
-#     }
-# }
+MEMUSAGE_LIMIT_MB = 2048
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': os.environ.get("BROKER_URL", "redis://localhost:6379/1"),
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+# Django Data Browser
+# References : https://pypi.org/project/django-data-browser/
+DATA_BROWSER_FE_DSN = "https://af64f22b81994a0e93b82a32add8cb2b@o390136.ingest.sentry.io/5231151"
+
 
 # Celery Settings and Redis  Production Setting # #
-CELERY_BROKER_URL=os.environ.get("CELERY_BROKER", "redis://host.docker.internal:6379/0")
-CELERY_RESULT_BACKEND = 'redis://host.docker.internal:6379/0'
-# CELERY_RESULT_BACKEND = 'db+postgresql://postgres:postgres@postgres/postgres'  # Use PostgreSQL as the result backend
-BROKER_URL = 'redis://host.docker.internal:6379/0'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = "Asia/Singapore"
-CELERY_TASK_TRACK_STARTED = True
-CELERY_TASK_TIME_LIMIT = 30 * 60
-CELERY_TASK_ALWAYS_EAGER = True
-CELERY_TASK_EAGER_PROPAGATES = True
-
+CELERY_BROKER_URL=os.environ.get("CELERY_BROKER", "redis://localhost:6379/0")
+# CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND", "redis://localhost:6379/0")
+CELERY_RESULT_BACKEND= os.environ.get("CELERY_RESULT_BACKEND", "db+postgresql://postgres:postgres@localhost/DB1")  # Use PostgreSQL as the result backend
+BROKER_URL=os.environ.get("BROKER_URL", "redis://localhost:6379/1")
+CELERY_ACCEPT_CONTENT=['application/json']
+CELERY_TASK_SERIALIZER='json'
+CELERY_RESULT_SERIALIZER='json'
+CELERY_TIMEZONE="Asia/Singapore"
+CELERY_TASK_TRACK_STARTED=True
+CELERY_TASK_TIME_LIMIT=30 * 60
+CELERY_TASK_ALWAYS_EAGER=True
+CELERY_TASK_EAGER_PROPAGATES=True
+CELERY_ALWAYS_EAGER=True
 BROKER_HEARTBEAT = 10 
 BROKER_HEARTBEAT_CHECKRATE = 2.0
 BROKER_POOL_LIMIT = None
@@ -272,12 +298,11 @@ BROKER_CONNECTION_MAX_RETRIES = 0
 BROKER_CONNECTION_TIMEOUT = 120
 BROKER_CONNECTION_RETRY_ON_STARTUP= True
 BROKER_CHANNEL_ERROR_RETRY=True
-
 # Configuration for sending email using gmail
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = "notifyprodtestemail1@gmail.com"
-EMAIL_HOST_PASSWORD = 'Michael@5151'
-EMAIL_PORT = 587
+EMAIL_USE_TLS=os.environ.get("EMAIL_USE_TLS", True)
+EMAIL_HOST=os.environ.get("EMAIL_HOST", "smtp.gmail.com")
+EMAIL_HOST_USER=os.environ.get("EMAIL_HOST_USER", "notifyprodtestemail1@gmail.com")
+EMAIL_HOST_PASSWORD=os.environ.get("EMAIL_HOST_PASSWORD", "Michael@5151")
+EMAIL_PORT=os.environ.get("EMAIL_PORT", 587)
 
