@@ -1,1 +1,1 @@
-web: gunicorn fintechengine.wsgi --log-file=-
+web: gunicorn multitenantsaas.wsgi --log-file=-

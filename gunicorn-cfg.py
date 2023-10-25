@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 """
-Copyright (c) 2019 - present cloudapp.io
+Copyright (c) 2023 - present cloudapp.io
 """
 
 bind = '0.0.0.0:8585'

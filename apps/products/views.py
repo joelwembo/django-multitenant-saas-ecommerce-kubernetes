@@ -1,25 +1,34 @@
-from django.views import View
-from django.views.generic import DetailView, ListView
-from rest_framework import status, viewsets, generics
-from rest_framework.response import Response
-from .serializer import ProductSerializer , ProductEditableSerializer
-from .models import PaymentHistory, Price, Product
-import stripe
 from django.conf import settings
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
-
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.cache import cache_page
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
+from django.views import View
+from django.views.generic import DetailView, ListView
+
+# Django Rest Framework lib
+from rest_framework import status, viewsets, generics
+from rest_framework.response import Response
+# Stripe lib
+import stripe
+
+# Models and serializer
+from .serializer import ProductSerializer , ProductEditableSerializer
+from .models import PaymentHistory, Price, Product
 
 
+
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 stripe.api_key = 'sk_test_51LXmPhI1Paqp8Qt3Tca8GhuEe1FI2bKbkscog7ORAiGRL00QsAKVgMaSwQ8RXUnM4Y3GwVC2BHLdZwoswI8dY0ax00GBNzBHsK'
 
 
+# @cache_page(timeout=60 * 30)  # cache for 30 minutes
 class ProductListView(ListView):
     model = Product
     context_object_name = "products"

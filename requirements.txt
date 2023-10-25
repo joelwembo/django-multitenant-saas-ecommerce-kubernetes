@@ -77,4 +77,7 @@ django-extensions
 wagtail
 # pygraphviz
 django-ledger
+django-debug-toolbar-template-timings
 # pipenv
+django-countries
+django-tenants

@@ -11,6 +11,20 @@ source ./venv/Scripts/activate
 
 source ./venv/Scripts/deactivate
 
+# Multi tenant settings
+
+pip install -r requirements.txt
+
+python manage.py makemigrations client_app
+python manage.py makemigrations app
+
+python manage.py migrate client_app
+python manage.py migrate app
+
+tenant = Client(schema_name="bigco", name="Big Company")
+
+domain = Domain(domain="bigco.localhost", tenant=tenant, is_primary=True)
+
 # Local 
 
 bash ./server-entrypoint.sh
@@ -37,7 +51,7 @@ http://127.0.0.1:8585/graphql
 
 # Extensions
 python manage.py show_urls
-python manage.py graph_models finances -a -o finances_models-1.png
+python manage.py graph_models finances -a -o finances_models.png
 
 # wagtail
 

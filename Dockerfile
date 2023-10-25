@@ -29,5 +29,5 @@ COPY . /app/
 # RUN python manage.py migrate
 EXPOSE 8585
 # gunicorn
-# CMD ["gunicorn", "--config", "gunicorn-cfg.py", "fintechengine.wsgi"]
-# RUN gunicorn fintechengine.wsgi:application --bind 0.0.0.0:8585
+# CMD ["gunicorn", "--config", "gunicorn-cfg.py", "multitenantsaas.wsgi"]
+# RUN gunicorn multitenantsaas.wsgi:application --bind 0.0.0.0:8585

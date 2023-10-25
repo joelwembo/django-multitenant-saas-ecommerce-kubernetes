@@ -4,9 +4,9 @@ import random
 from celery import Celery , shared_task
 from celery.schedules import crontab
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fintechengine.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "multitenantsaas.settings")
 
-app = Celery("fintechengine")
+app = Celery("multitenantsaas")
 app.config_from_object("django.conf:settings", namespace="CELERY")
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()

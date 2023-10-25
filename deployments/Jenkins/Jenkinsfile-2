@@ -34,7 +34,7 @@ pipeline{
             stage('Setup Gunicorn Setup'){
                 steps {
                 bat '''
-                gunicorn --bind 0.0.0.0:8000 fintechengine.wsgi
+                gunicorn --bind 0.0.0.0:8000 multitenantsaas.wsgi
                 '''
                 }
             }

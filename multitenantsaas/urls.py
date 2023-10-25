@@ -35,6 +35,7 @@ from apps.snippets.views import SnippetsViewSet
 from apps.finances.views import AccountViewSet , TransactionViewSet, CategoryViewSet
 from apps.products.views import ProductViewSet , CreateStripeCheckoutSessionView
 
+
 router = routers.DefaultRouter()
 router.register(r'router/snippets', SnippetsViewSet, basename="snippets")
 router.register(r'router/accounts', AccountViewSet, basename="accounts")
@@ -49,10 +50,10 @@ user_detail = SnippetsViewSet.as_view({'get': 'retrieve'})
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Finance & Machine Learning API",
+        title="Multi-tenant SaaS Application",
         default_version='v1',
-        description="cloudapp API built by Joel Otepa Wembo",
-        terms_of_service="https://cloudapp.io/policies/terms/",
+        description="API built by Joel Otepa Wembo",
+        terms_of_service="https://domain.io/policies/terms/",
         contact=openapi.Contact(email="mail@djangoapp.com"),
         license=openapi.License(name="BSD License"),
     ),
@@ -64,7 +65,8 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include(router.urls)),
+    path("api/v1/", include(router.urls)),
+    path("",  include(router.urls)),
     path('home', include(home_urls)),
     path('api/v1/snippets/', include(snippets_urls)),
     path('api/v1/finances/', include(finances_urls)),

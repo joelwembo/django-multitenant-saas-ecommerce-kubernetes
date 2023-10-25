@@ -14,7 +14,7 @@ services:
       - |
         python manage.py migrate
         python manage.py runserver 0.0.0.0:8585
-        # gunicorn fintechengine.wsgi:application --bind 0.0.0.0:8585
+        # gunicorn multitenantsaas.wsgi:application --bind 0.0.0.0:8585
         
     ports:
       - "8585:8585"
@@ -29,7 +29,7 @@ services:
   celery:
     container_name: cloudapp-django-celery
     build: .
-    command: celery -A fintechengine worker -l info
+    command: celery -A multitenantsaas worker -l info
     volumes:
       - .:/django_app
     environment:
@@ -58,7 +58,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=DB1
+      - POSTGRES_DB=DB2
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_PORT=5432
