@@ -52,7 +52,7 @@ schema_view = get_schema_view(
     openapi.Info(
         title="Multi-tenant SaaS Application",
         default_version='v1',
-        description="API built by Joel Otepa Wembo",
+        description="Microservices built by Joel Otepa Wembo",
         terms_of_service="https://domain.io/policies/terms/",
         contact=openapi.Contact(email="mail@djangoapp.com"),
         license=openapi.License(name="BSD License"),

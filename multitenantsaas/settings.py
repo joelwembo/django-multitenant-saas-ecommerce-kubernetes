@@ -24,17 +24,20 @@ if DEBUG:
     INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["10.0.2.2", "host.docker.internal"]
     
 # ALLOWED_HOSTS = [os.getenv("ALLOWED_PORTS")]
-ALLOWED_HOSTS = ['localhost' , '127.0.0.1', '0.0.0.0', 'host.docker.internal']
+ALLOWED_HOSTS = ['localhost' , '127.0.0.1', '0.0.0.0', 'host.docker.internal', '172.104.60.217']
 
 # Cors Settings
-BACKEND_DOMAIN = 'http://127.0.0.1:8585/'
-PAYMENT_SUCCESS_URL = 'http://127.0.0.1:8585/api/v1/products/success/'
-PAYMENT_CANCEL_URL = 'http://127.0.0.1:8585/api/v1/products/cancel/'
+BACKEND_DOMAIN = 'http://172.104.60.217:8585/'
+PAYMENT_SUCCESS_URL = 'http://172.104.60.217:8585/api/v1/products/success/'
+PAYMENT_CANCEL_URL = 'http://172.104.60.217:8585/api/v1/products/cancel/'
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:3000",
-    "http://localhost:3000"
+    "http://172.104.60.217:3000",
+    "http://localhost:3000",
+    "http://1270.0.0.1:3000",
+    "http://127.0.0.1",
+    "http://localhost"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -45,9 +48,9 @@ DATA_BROWSER_FE_DSN = "https://af64f22b81994a0e93b82a32add8cb2b@o390136.ingest.s
 
 
 # Application definition # # # # #
-SHARED_APPS = [
-    'django_tenants',
-    'apps.app',
+INSTALLED_APPS = [
+    # 'django_tenants',
+    # 'apps.app',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -79,16 +82,16 @@ SHARED_APPS = [
 TENANT_APPS = ["client_app"]
 
 
-# Application definition # # # # #
-INSTALLED_APPS = SHARED_APPS + [app for app in TENANT_APPS if app not in SHARED_APPS]
+# # Application definition # # # # #
+# INSTALLED_APPS = SHARED_APPS + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
-TENANT_APPS = ["apps.home"]
+# TENANT_APPS = ["apps.home"]
 
-TENANT_MODEL = "app.Client"
+# TENANT_MODEL = "app.Client"
 
-TENANT_DOMAIN_MODEL = "app.Domain"
+# TENANT_DOMAIN_MODEL = "app.Domain"
 
-PUBLIC_SCHEMA_URLCONF = "app.urls"
+# PUBLIC_SCHEMA_URLCONF = "app.urls"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -100,7 +103,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    "django_tenants.middleware.main.TenantMainMiddleware"
+    # "django_tenants.middleware.main.TenantMainMiddleware"
 ]
 
 DEBUG_TOOLBAR_PANELS = [
@@ -121,7 +124,8 @@ INTERNAL_IPS = [
     "127.0.0.1",
     "localhost",
     "0.0.0.0",
-    "host.docker.internal"
+    "host.docker.internal",
+    "172.104.60.217"
 ]
 
 ROOT_URLCONF = 'multitenantsaas.urls'
@@ -159,21 +163,10 @@ WSGI_APPLICATION = 'multitenantsaas.wsgi.application'
 # Database postgres Docker 
 # Docker host : host.docker.internal  or db cloudapp-django-postgresdb  3.0.55.190
 # docker inspect cloudapp-django-postgresdb | grep "IPAddress"
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ.get("POSTGRES_NAME", "DB2"),
-#         'USER': os.environ.get("POSTGRES_USER", "postgres"),
-#         'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "postgres"),
-#         'HOST': os.environ.get("POSTGRES_HOST", "localhost"),
-#         'PORT': int(os.environ.get("POSTGRES_PORT", "5432")),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django_tenants.postgresql_backend',
-        'NAME': 'os.environ.get("POSTGRES_NAME", "DB2")',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get("POSTGRES_NAME", "DB2"),
         'USER': os.environ.get("POSTGRES_USER", "postgres"),
         'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "postgres"),
         'HOST': os.environ.get("POSTGRES_HOST", "localhost"),
@@ -181,9 +174,20 @@ DATABASES = {
     }
 }
 
-DATABASE_ROUTERS = (
-    'django_tenants.routers.TenantSyncRouter',
-)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django_tenants.postgresql_backend',
+#         'NAME': 'os.environ.get("POSTGRES_NAME", "DB2")',
+#         'USER': os.environ.get("POSTGRES_USER", "postgres"),
+#         'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "postgres"),
+#         'HOST': os.environ.get("POSTGRES_HOST", "localhost"),
+#         'PORT': int(os.environ.get("POSTGRES_PORT", "5432")),
+#     }
+# }
+
+# DATABASE_ROUTERS = (
+#     'django_tenants.routers.TenantSyncRouter',
+# )
 
 
 # #Production / Development MYSQL
@@ -283,7 +287,7 @@ MEMUSAGE_LIMIT_MB = 2048
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': os.environ.get("BROKER_URL", "redis://localhost:6379/1"),
+        'LOCATION': os.environ.get("BROKER_URL", "redis://redis:6379/1"),
         "KEY_PREFIX": "DB2",
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
@@ -293,10 +297,11 @@ CACHES = {
 
 
 # Celery parameters and Redis  Production parameters
-CELERY_BROKER_URL=os.environ.get("CELERY_BROKER", "redis://localhost:6379/0")
-# CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND", "redis://localhost:6379/0")
-CELERY_RESULT_BACKEND= os.environ.get("CELERY_RESULT_BACKEND", "db+postgresql://postgres:postgres@localhost/DB2") 
-BROKER_URL=os.environ.get("BROKER_URL", "redis://localhost:6379/1")
+CELERY_BROKER_URL=os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND", "redis://redis:6379/0")
+CELERY_BROKER_TRANSPORT_URL=os.environ.get("CELERY_RESULT_BACKEND", "redis://redis:6379/0")
+# CELERY_RESULT_BACKEND= os.environ.get("CELERY_RESULT_BACKEND", "db+postgresql://postgres:postgres@172.104.60.217/DB2") 
+BROKER_URL=os.environ.get("BROKER_URL", "redis://redis:6379/1")
 CELERY_ACCEPT_CONTENT=['application/json']
 CELERY_TASK_SERIALIZER='json'
 CELERY_RESULT_SERIALIZER='json'
@@ -314,6 +319,7 @@ BROKER_CONNECTION_MAX_RETRIES = 0
 BROKER_CONNECTION_TIMEOUT = 120
 BROKER_CONNECTION_RETRY_ON_STARTUP= True
 BROKER_CHANNEL_ERROR_RETRY=True
+BROKER_TRANSPORT = "kombu.transport.django"
 
 # Parameters for SMTP EMAIL EmailBackend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -323,3 +329,5 @@ EMAIL_HOST_USER=os.environ.get("EMAIL_HOST_USER", "notifyprodtestemail1@gmail.co
 EMAIL_HOST_PASSWORD=os.environ.get("EMAIL_HOST_PASSWORD", "Michael@5151")
 EMAIL_PORT=os.environ.get("EMAIL_PORT", 587)
 
+C_FORCE_ROOT = 'true' 
+C_FORCE_ROOT = True

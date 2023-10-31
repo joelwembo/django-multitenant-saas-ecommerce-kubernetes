@@ -75,9 +75,10 @@ django-debug-toolbar
 django-data-browser
 django-extensions
 wagtail
+sqlalchemy
 # pygraphviz
 django-ledger
 django-debug-toolbar-template-timings
 # pipenv
 django-countries
-django-tenants
+# django-tenants

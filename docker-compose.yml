@@ -14,7 +14,7 @@ services:
       - |
         python manage.py migrate
         python manage.py runserver 0.0.0.0:8585
-        # gunicorn multitenantsaas.wsgi:application --bind 0.0.0.0:8585
+        gunicorn multitenantsaas.wsgi:application --bind 0.0.0.0:8080
         
     ports:
       - "8585:8585"
@@ -42,10 +42,13 @@ services:
       - .:/django_app
     environment:
       - DEBUG=0
-      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 172.104.60.217  [::1]
       - CELERY_BROKER_URL="redis://redis:6379/0"
       - CELERY_RESULT_BACKEND="redis://redis:6379/0"
       - broker_connection_retry_on_startup="True"
+      - CELERY_TASK_ALWAYS_EAGER=True
+      - C_FORCE_ROOT=true
+      - BROKER_TRANSPORT = "kombu.transport.django"
     depends_on:
       - redis
   redis:
@@ -60,7 +63,7 @@ services:
       # networks:
       #     - db_network  #
   cloudapp-django-postgresdb:
-    # restart: always
+    restart: always
     image: postgres:latest
     container_name: cloudapp-django-postgresdb
     volumes:
@@ -78,7 +81,7 @@ services:
     # networks:
     #    - data_network   
   pgadmin:
-        # restart: always
+        restart: always
         image: dpage/pgadmin4
         container_name: cloudapp-fintech-pgadmin 
         depends_on:
@@ -86,7 +89,7 @@ services:
         ports:
           - "5051:80"
         environment:
-          PGADMIN_DEFAULT_EMAIL: mail@djangoapp.com
+          PGADMIN_DEFAULT_EMAIL: 19718580.dev1@protonmail.com
           PGADMIN_DEFAULT_PASSWORD: postgres   
           PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'False'
           PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: 'False'

@@ -5,9 +5,9 @@ name: Django CI & Postgres Test
 #   workflow_dispatch:
 on:
   push:
-    branches: ['master', 'main']
+    branches: ['master']
   pull_request:
-    branches: [ "master", 'main' ]
+    branches: [ "master" ]
 
 jobs:
   django_test:
@@ -17,7 +17,7 @@ jobs:
         working-directory: .
     env:
       DJANGO_SECRET_KEY: 54g6s%qjfnhbpw0zeoei=$!her*y(p%!&84rs$4l85io
-      POSTGRES_DB: DB1
+      POSTGRES_DB: DB2
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_HOST: localhost

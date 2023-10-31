@@ -1,32 +1,21 @@
 # DJANGO Cloud App
 ![image](https://github.com/joelwembo/django-restful-api-postgres-kubernetes-poc/assets/19718580/2a609fc0-be6e-42dd-b954-35dbb5776b60)
 
-
 @author : Joel Otepa Wembo
 
 # create a new virtual environemnt
 virtualenv venv 
 
-source ./venv/Scripts/activate
+source ./venv/Scripts/activate ( Windows )
+source ./venv/bin/activate ( ubuntu)
 
 source ./venv/Scripts/deactivate
 
-# Multi tenant settings
-
 pip install -r requirements.txt
-
-python manage.py makemigrations client_app
-python manage.py makemigrations app
-
-python manage.py migrate client_app
-python manage.py migrate app
-
-tenant = Client(schema_name="bigco", name="Big Company")
-
-domain = Domain(domain="bigco.localhost", tenant=tenant, is_primary=True)
 
 # Local 
 
+python manage.py createsuperuser
 bash ./server-entrypoint.sh
 
 # Docker
@@ -62,3 +51,24 @@ Alternatively, run a command inside the virtualenv with pipenv run.
 
 pipenv install django-ledger[graphql,pdf]
 python manage.py test django_ledger
+
+
+# Multi tenant settings
+
+pip install -r requirements.txt
+
+python manage.py makemigrations client_app
+python manage.py makemigrations app
+
+python manage.py migrate client_app
+python manage.py migrate app
+
+tenant = Client(schema_name="bigco", name="Big Company")
+
+domain = Domain(domain="bigco.localhost", tenant=tenant, is_primary=True)
+
+# For more information contact: 
+
+@author : Joel Otepa Wembo
+@website: www.joelwembo.com
+@linkedin: https://www.linkedin.com/in/joelotepawembo/

@@ -4,11 +4,11 @@
 SIZE=50
 
 # generate token to access instance metadata
-TOKEN=$(curl -X PUT "http://ipaddress/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 5")
+TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 5")
 
 # Get the ID of the environment host Amazon EC2 instance.
-INSTANCEID=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://ipaddress/latest/meta-data/instance-id)
-REGION=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://ipaddress/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
+INSTANCEID=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-id)
+REGION=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
 
 # Get the ID of the Amazon EBS volume associated with the instance.
 VOLUMEID=$(aws ec2 describe-instances \
