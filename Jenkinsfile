@@ -69,8 +69,10 @@ pipeline{
          stage('Deploy to AWS') {
             steps {
                  dir('deployments') {
+                    sh 'docker images --filter "reference=cloudapp-django-web*"' 
+                    sh './deploy-aws-ec2.sh'
                  }
-                sh './deploy-aws-ec2.sh'
+              
             }
         } 
     }
