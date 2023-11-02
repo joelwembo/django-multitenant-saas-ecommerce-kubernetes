@@ -36,7 +36,7 @@ pipeline{
                 steps {
                     sh 'docker images'
                     // sh 'docker images --filter "reference=cloudapp-django-web*"' 
-                    sh 'docker push joelwembo/cloudapp-django:latest'
+                    sh 'docker push joelwembo/cloudapp-django-web:latest'
                 }
             }
             stage('Run the Application'){
