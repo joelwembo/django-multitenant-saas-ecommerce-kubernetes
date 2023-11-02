@@ -15,7 +15,7 @@ pipeline{
             stage('Environment'){
             steps {
                 sh 'python3 --version'
-                    git url: 'https://github.com/joelwembo/cloudapp-engine-django.git' 
+                    git url: 'https://github.com/joelwembo/django-multitenant-saas-ecommerce-kubernetes.git' 
                 }
         
             }

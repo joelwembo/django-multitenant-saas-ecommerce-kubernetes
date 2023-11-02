@@ -11,7 +11,7 @@ on:
 
 jobs:
     test_django_job:
-      uses: joelwembo/cloudapp-engine-django/.github/workflows/test-django.yaml@master
+      uses: joelwembo/ django-multitenant-saas-ecommerce-kubernetes/.github/workflows/test-django.yaml@master
     build:
       runs-on: ubuntu-latest
       needs: [test_django_job]

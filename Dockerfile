@@ -10,7 +10,7 @@ WORKDIR /app
 COPY requirements.txt /app/
 COPY gunicorn-cfg.py /app/
 
-COPY deployments ./app/deployments/
+# COPY deployments ./app/deployments/
 
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
