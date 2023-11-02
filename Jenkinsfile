@@ -21,7 +21,7 @@ pipeline{
             }
             stage('Build'){ 
             steps  {
-                sh 'docker-compose down && docker-compose build -t joelwembo/cloudapp-django-web:latest --no-cache'
+                sh 'docker-compose down && docker-compose build'
                 }
             }
             stage('Login') {
@@ -30,11 +30,11 @@ pipeline{
                 }
             }
 
-           stage('Docker Push') {
-                steps {
-                    sh 'docker push joelwembo/cloudapp-django-web:latest'
-                }
-            }
+        //    stage('Docker Push') {
+        //         steps {
+        //             sh 'docker push cloudapp-django-web:latest'
+        //         }
+        //     }
             stage('Run the Application'){
                 steps {
                     sh 'docker-compose up -d'
