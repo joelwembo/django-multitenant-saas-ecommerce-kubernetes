@@ -21,7 +21,8 @@ pipeline{
             }
             stage('Build'){ 
             steps  {
-                sh 'docker-compose down && docker-compose build'
+                sh 'docker-compose down'
+                sh 'docker-compose build -t joelwembo/cloudapp-django-web:latest --no-cache . '
                 }
             }
             stage('Login') {
@@ -34,9 +35,8 @@ pipeline{
            stage('Docker Push') {
                 steps {
                     sh 'docker images'
-                    sh 'docker images --filter "reference=cloudapp-django-web*"' 
-                    sh 'docker images --filter "reference=cloudapp-django-postgresd*"' 
-                    sh 'docker push cloudapp-django-web'
+                    // sh 'docker images --filter "reference=cloudapp-django-web*"' 
+                    sh 'docker push joelwembo/cloudapp-django:latest'
                 }
             }
             stage('Run the Application'){
