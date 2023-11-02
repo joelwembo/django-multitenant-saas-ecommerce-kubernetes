@@ -1,4 +1,5 @@
 #!/bin/sh
+whoami
 echo 'deployed to production server'
 # ssh root@YOUR_SERVER_IP_ADDRESS <<EOF
 #   cd /path/to/your/project

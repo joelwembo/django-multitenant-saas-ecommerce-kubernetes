@@ -50,28 +50,31 @@ pipeline{
                 }
             }
 
-        //   stage('k8s Deployment"') {
-        //   steps {
-        //     sh 'export KUBECONFIG=~/.kube/config'
-        //     sh 'kubectl cluster-info'
-        //     dir('deployments/k8s') {
-        //       sh 'kubectl delete namespace cloudapp-django-web'
-        //       sh 'kubectl create namespace cloudapp-django-web'
-        //       sh 'kubectl config set-context --current --namespace=cloudapp-django-web'
-        //       sh 'kubectl apply -f deployment.yaml'
-        //     }    
-        //     sh 'kubectl get services && kubectl get pods'
-        //     sh 'minikube service cloudapp-django-web -n  cloudapp-django-web &'
-        //     sh 'exit 0'
-        //    }
-        //  }  
+          stage('k8s Deployment"') {
+          steps {
+            sh 'kubectl config set-cluster minikube --server=https://192.168.49.2:8443 --insecure-skip-tls-verify=true'
+            sh 'kubectl config set-context minikube --cluster=minikube --user=minikube'
+            sh 'kubectl config use-context minikube'
+            sh 'kubectl cluster-info'
+            dir('deployments/k8s') {
+              sh 'kubectl delete namespace cloudapp-django-web'
+              sh 'kubectl create namespace cloudapp-django-web'
+              sh 'kubectl config set-context --current --namespace=cloudapp-django-web'
+              sh 'kubectl apply -f deployment.yaml'
+            }    
+            sh 'kubectl get services && kubectl get pods'
+            sh 'minikube service cloudapp-django-web -n  cloudapp-django-web &'
+            sh 'exit 0'
+           }
+         }  
 
          stage('Deploy to AWS') {
             steps {
                  dir('deployments') {
+                    sh "pwd"
                     sh "chmod +x -R ./deploy-aws-ec2.sh"
                     sh 'docker images --filter "reference=cloudapp-django-web*"' 
-                    sh 'sudo ./deploy-aws-ec2.sh'
+                    sh './deploy-aws-ec2.sh'
                  }
               
             }
