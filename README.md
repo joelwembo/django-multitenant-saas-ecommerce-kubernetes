@@ -19,13 +19,10 @@ python manage.py createsuperuser
 bash ./server-entrypoint.sh
 
 # Docker
-
 bash ./run.sh
-
 http://127.0.0.1:8585/
 
 # API Docs
-
 http://127.0.0.1:8585/swagger/
 
 # Data Browser
