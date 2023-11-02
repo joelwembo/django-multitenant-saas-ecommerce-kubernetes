@@ -55,17 +55,17 @@ pipeline{
             sh 'kubectl config set-cluster minikube --server=https://192.168.49.2:8443 --insecure-skip-tls-verify=true'
             sh 'kubectl config set-context minikube --cluster=minikube --user=minikube'
             sh 'kubectl config use-context minikube'
-            sh 'kubectl cluster-info'
-            dir('deployments/k8s') {
-              sh 'kubectl delete namespace cloudapp-django-web'
-              sh 'kubectl create namespace cloudapp-django-web'
-              sh 'kubectl config set-context --current --namespace=cloudapp-django-web'
-              sh 'kubectl apply -f deployment.yaml'
-            }    
-            sh 'kubectl get services && kubectl get pods'
-            sh 'minikube service cloudapp-django-web -n  cloudapp-django-web &'
-            sh 'exit 0'
-           }
+            // sh 'kubectl cluster-info'
+        //     dir('deployments/k8s') {
+        //       sh 'kubectl delete namespace cloudapp-django-web'
+        //       sh 'kubectl create namespace cloudapp-django-web'
+        //       sh 'kubectl config set-context --current --namespace=cloudapp-django-web'
+        //       sh 'kubectl apply -f deployment.yaml'
+        //     }    
+        //     sh 'kubectl get services && kubectl get pods'
+        //     sh 'minikube service cloudapp-django-web -n  cloudapp-django-web &'
+        //     sh 'exit 0'
+        //    }
          }  
 
          stage('Deploy to AWS') {
