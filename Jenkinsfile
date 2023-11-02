@@ -69,8 +69,9 @@ pipeline{
          stage('Deploy to AWS') {
             steps {
                  dir('deployments') {
+                    sh "chmod +x -R ./deploy-aws-ec2.sh"
                     sh 'docker images --filter "reference=cloudapp-django-web*"' 
-                    sh './deploy-aws-ec2.sh'
+                    sh 'sudo ./deploy-aws-ec2.sh'
                  }
               
             }
