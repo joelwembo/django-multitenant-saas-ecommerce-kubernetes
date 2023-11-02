@@ -1,1 +1,0 @@
-docker exec -it cloudapp-django-web celery -A multitenantsaas flower --port=5555

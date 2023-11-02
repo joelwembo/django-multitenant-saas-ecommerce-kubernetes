@@ -1,1 +1,0 @@
-docker exec -it cloudapp-django-postgresdb bash
