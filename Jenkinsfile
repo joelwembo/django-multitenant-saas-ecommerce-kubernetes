@@ -50,7 +50,7 @@ pipeline{
                 }
             }
 
-          stage('k8s Deployment"') {
+          stage('k8s Deployment') {
           steps {
             sh 'kubectl config set-cluster minikube --server=https://192.168.49.2:8443 --insecure-skip-tls-verify=true'
             sh 'kubectl config set-context minikube --cluster=minikube --user=minikube'
@@ -66,7 +66,8 @@ pipeline{
         //     sh 'minikube service cloudapp-django-web -n  cloudapp-django-web &'
         //     sh 'exit 0'
         //    }
-         }  
+         } 
+          } 
 
          stage('Deploy to AWS') {
             steps {
@@ -80,4 +81,6 @@ pipeline{
             }
         } 
     }
-}
+
+ }
+
