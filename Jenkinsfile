@@ -50,20 +50,21 @@ pipeline{
                 }
             }
 
-          stage('Deploy to K8s') {
-          steps {
-            sh 'kubectl cluster-info'
-            dir('deployments/k8s') {
-              sh 'kubectl delete namespace cloudapp-django-web'
-              sh 'kubectl create namespace cloudapp-django-web'
-              sh 'kubectl config set-context --current --namespace=cloudapp-django-web'
-              sh 'kubectl apply -f deployment.yaml'
-            }    
-            sh 'kubectl get services && kubectl get pods'
-            sh 'minikube service cloudapp-django-web -n  cloudapp-django-web &'
-            sh 'exit 0'
-           }
-         }  
+        //   stage('k8s Deployment"') {
+        //   steps {
+        //     sh 'export KUBECONFIG=~/.kube/config'
+        //     sh 'kubectl cluster-info'
+        //     dir('deployments/k8s') {
+        //       sh 'kubectl delete namespace cloudapp-django-web'
+        //       sh 'kubectl create namespace cloudapp-django-web'
+        //       sh 'kubectl config set-context --current --namespace=cloudapp-django-web'
+        //       sh 'kubectl apply -f deployment.yaml'
+        //     }    
+        //     sh 'kubectl get services && kubectl get pods'
+        //     sh 'minikube service cloudapp-django-web -n  cloudapp-django-web &'
+        //     sh 'exit 0'
+        //    }
+        //  }  
 
          stage('Deploy to AWS') {
             steps {
