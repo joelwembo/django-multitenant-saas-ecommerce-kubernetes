@@ -13,8 +13,8 @@ services:
       - -c
       - |
         python manage.py migrate
-        python manage.py runserver 0.0.0.0:8585
-        # gunicorn multitenantsaas.wsgi:application --bind 0.0.0.0:8585
+        python manage.py runserver 0.0.0.0:8080
+        # gunicorn multitenantsaas.wsgi:application --bind 0.0.0.0:8080
         
     ports:
       - "8585:8585"
@@ -22,22 +22,42 @@ services:
     #   - db_network
       - web_network
     volumes:
-      - .:/app  
+       - appdata:/app
     depends_on:
       - cloudapp-django-postgresdb
       # - redis 
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '0.001'
+    #       memory: 50M
+    #     reservations:
+    #       cpus: '0.0001'
+    #       memory: 20M 
   celery:
     container_name: cloudapp-django-celery
     build: .
-    command: celery -A multitenantsaas worker -l info
+    command: 
+       - /bin/sh
+       - -c
+       - |
+        user=django
+        group=developers
+        environment=C_FORCE_ROOT="yes"
+        environment=HOME="/root",USER="django"
+        celery -A multitenantsaas worker -l info
+        
     volumes:
       - .:/django_app
     environment:
       - DEBUG=0
-      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 172.104.60.217  [::1]
       - CELERY_BROKER_URL="redis://redis:6379/0"
       - CELERY_RESULT_BACKEND="redis://redis:6379/0"
       - broker_connection_retry_on_startup="True"
+      - CELERY_TASK_ALWAYS_EAGER=True
+      - C_FORCE_ROOT=true
+      - BROKER_TRANSPORT="kombu.transport.django"
     depends_on:
       - redis
   redis:
@@ -78,7 +98,7 @@ services:
         ports:
           - "5051:80"
         environment:
-          PGADMIN_DEFAULT_EMAIL: mail@djangoapp.com
+          PGADMIN_DEFAULT_EMAIL: 19718580.dev1@protonmail.com
           PGADMIN_DEFAULT_PASSWORD: postgres   
           PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'False'
           PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: 'False'
@@ -94,3 +114,7 @@ networks:
 volumes:
   pgdata:
   redisDB:
+  appdata:
+   driver: local
+
+  
