@@ -22,7 +22,7 @@ pipeline{
             stage('Build'){ 
             steps  {
                 sh 'docker-compose down'
-                sh 'docker-compose build -t joelwembo/cloudapp-django-web:latest --no-cache . '
+                sh 'docker build -t joelwembo/cloudapp-django-web:latest --no-cache .'
                 }
             }
             stage('Login') {
