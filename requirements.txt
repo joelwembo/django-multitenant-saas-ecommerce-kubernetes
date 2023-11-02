@@ -66,15 +66,15 @@ pytest-django
 graphene_django
 requests
 stripe
-django-neomodel==0.0.4
-neo4j-driver==1.2.1
-neomodel==3.2.5
+# django-neomodel==0.0.4
+# neo4j-driver==1.2.1
+# neomodel==3.2.5
 django-widget-tweaks
 Pillow
 django-debug-toolbar
 django-data-browser
 django-extensions
-wagtail
+# wagtail
 sqlalchemy
 # pygraphviz
 django-ledger

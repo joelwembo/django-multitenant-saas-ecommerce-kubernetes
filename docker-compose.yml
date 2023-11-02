@@ -14,7 +14,7 @@ services:
       - |
         python manage.py migrate
         python manage.py runserver 0.0.0.0:8585
-        gunicorn multitenantsaas.wsgi:application --bind 0.0.0.0:8080
+        # gunicorn multitenantsaas.wsgi:application --bind 0.0.0.0:8080
         
     ports:
       - "8585:8585"
@@ -22,7 +22,7 @@ services:
     #   - db_network
       - web_network
     volumes:
-      - .:/app  
+       - appdata:/app
     depends_on:
       - cloudapp-django-postgresdb
       # - redis 
@@ -37,7 +37,16 @@ services:
   celery:
     container_name: cloudapp-django-celery
     build: .
-    command: celery -A multitenantsaas worker -l info
+    command: 
+       - /bin/sh
+       - -c
+       - |
+        user=django
+        group=developers
+        environment=C_FORCE_ROOT="yes"
+        environment=HOME="/root",USER="django"
+        celery -A multitenantsaas worker -l info
+        
     volumes:
       - .:/django_app
     environment:
@@ -48,7 +57,7 @@ services:
       - broker_connection_retry_on_startup="True"
       - CELERY_TASK_ALWAYS_EAGER=True
       - C_FORCE_ROOT=true
-      - BROKER_TRANSPORT = "kombu.transport.django"
+      - BROKER_TRANSPORT="kombu.transport.django"
     depends_on:
       - redis
   redis:
@@ -105,5 +114,7 @@ networks:
 volumes:
   pgdata:
   redisDB:
+  appdata:
+   driver: local
 
   
