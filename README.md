@@ -1,4 +1,4 @@
-# DJANGO Cloud App
+# django-multitenant-saas-ecommerce-kubernetes 
 ![image](https://github.com/joelwembo/django-restful-api-postgres-kubernetes-poc/assets/19718580/2a609fc0-be6e-42dd-b954-35dbb5776b60)
 
 @author : Joel Otepa Wembo
@@ -69,3 +69,18 @@ domain = Domain(domain="bigco.localhost", tenant=tenant, is_primary=True)
 @author : Joel Otepa Wembo
 @website: www.joelwembo.com
 @linkedin: https://www.linkedin.com/in/joelotepawembo/
+
+# CI/CD Workflows
+![1594373757598](https://github.com/joelwembo/django-multitenant-saas-ecommerce-kubernetes/assets/19718580/3e5502e5-94b8-4229-9f7f-505b7f445c8a)
+
+Tools
+Docker
+Jenkins
+Uuntu
+Kubernetes
+Bash
+Python
+Terraform
+
+
+
