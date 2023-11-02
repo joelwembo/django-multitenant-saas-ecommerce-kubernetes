@@ -27,14 +27,18 @@ pipeline{
             stage('Login') {
                 steps {
                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                    
                 }
             }
 
-        //    stage('Docker Push') {
-        //         steps {
-        //             sh 'docker push cloudapp-django-web:latest'
-        //         }
-        //     }
+           stage('Docker Push') {
+                steps {
+                    sh 'docker images'
+                    sh 'docker images --filter "reference=cloudapp-django-web*"' 
+                    sh 'docker images --filter "reference=cloudapp-django-postgresd*"' 
+                    sh 'docker push cloudapp-django-web'
+                }
+            }
             stage('Run the Application'){
                 steps {
                     sh 'docker-compose up -d'
