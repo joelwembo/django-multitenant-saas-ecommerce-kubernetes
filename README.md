@@ -54,33 +54,34 @@ python manage.py test django_ledger
 
 pip install -r requirements.txt
 
-python manage.py makemigrations client_app
+python manage.py makemigrations finances
 python manage.py makemigrations app
 
-python manage.py migrate client_app
+python manage.py migrate finances
 python manage.py migrate app
 
-tenant = Client(schema_name="bigco", name="Big Company")
+tenant = Client(schema_name="test", name="test Company")
 
-domain = Domain(domain="bigco.localhost", tenant=tenant, is_primary=True)
+domain = Domain(domain="btest.localhost", tenant=tenant, is_primary=True)
+
+# CI/CD Workflows
+
+![1594373757598](https://github.com/joelwembo/django-multitenant-saas-ecommerce-kubernetes/assets/19718580/3e5502e5-94b8-4229-9f7f-505b7f445c8a)
+
+- Tools
+- Docker
+- Jenkins
+- Ubuntu
+- Kubernetes
+- Bash
+- Python
+- Terraform
 
 # For more information contact: 
 
-@author : Joel Otepa Wembo
-@website: www.joelwembo.com
-@linkedin: https://www.linkedin.com/in/joelotepawembo/
-
-# CI/CD Workflows
-![1594373757598](https://github.com/joelwembo/django-multitenant-saas-ecommerce-kubernetes/assets/19718580/3e5502e5-94b8-4229-9f7f-505b7f445c8a)
-
-Tools
-Docker
-Jenkins
-Uuntu
-Kubernetes
-Bash
-Python
-Terraform
+- @author : Joel Otepa Wembo
+- @website: www.joelwembo.com
+- @linkedin: https://www.linkedin.com/in/joelotepawembo/
 
 
 
