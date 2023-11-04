@@ -108,14 +108,25 @@ pipeline{
             }
         } 
     }
-    post {
-        success {
-            echo 'Deployment successful!'
-        }
-        failure {
-            echo 'Deployment failed!'
-        }
-    }
+        post {
+            success {
+                script {
+                    currentBuild.result = 'SUCCESS'
+                    slackSend(color: 'good', message: "Deployment successful! :tada:", channel: "#DEV")
+                    emailext subject: 'Deployment Successful',
+                            body: 'Deployment was successful!',
+                            recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+                }
+            }
+            failure {
+                script {
+                    currentBuild.result = 'FAILURE'
+                    slackSend(color: 'danger', message: "Deployment failed. :x:", channel: "#DEV")
+                    emailext subject: 'Deployment Failed',
+                            body: 'Deployment failed!',
+                            recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+                }
+            }
 
- }
-
+        }
+}
