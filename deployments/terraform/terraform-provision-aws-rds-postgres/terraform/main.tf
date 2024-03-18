@@ -33,11 +33,11 @@ resource "aws_db_parameter_group" "education" {
   }
 }
 
-variable "db_password" {
-  description = "RDS root user password"
-#   type        = string
-#   sensitive   = false
-}
+# variable "db_password" {
+#   description = "RDS root user password"
+# #   type        = string
+# #   sensitive   = false
+# }
 
 
 

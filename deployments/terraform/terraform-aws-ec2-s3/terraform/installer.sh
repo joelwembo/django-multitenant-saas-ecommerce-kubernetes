@@ -13,7 +13,7 @@ sudo apt install postgresql postgresql-contrib --assume-yes
 # Start the db service
 systemctl stop postgresql
 systemctl enable postgresql
-systemctl start postgresql
+# systemctl start postgresql
 echo 'Postgresql Installed successfully installer'
 
 # Docker installation
