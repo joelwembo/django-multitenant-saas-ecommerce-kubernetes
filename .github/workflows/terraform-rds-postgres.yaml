@@ -26,7 +26,7 @@ jobs:
      run:
        shell: bash
        # We keep Terraform files in the terraform directory.
-       working-directory: ./terraform/aws/terraform-aws-ec2-github-actions-tfcloud/terraform
+       working-directory: ./deployments/terraform/terraform-provision-aws-rds-postgres/terraform
  
    steps:
      - name: Checkout the repository to the runner
