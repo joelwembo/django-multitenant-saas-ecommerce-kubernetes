@@ -21,10 +21,10 @@ DEBUG=config('DEBUG', default=True, cast=bool)
 
 if DEBUG:
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
-    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["10.0.2.2", "host.docker.internal"]
+    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["10.0.2.2", "host.docker.internal", "47.128.216.140"]
     
 # ALLOWED_HOSTS = [os.getenv("ALLOWED_PORTS")]
-ALLOWED_HOSTS=['localhost' , '127.0.0.1', '0.0.0.0', 'host.docker.internal', '172.104.60.217']
+ALLOWED_HOSTS=['localhost' , '127.0.0.1', '0.0.0.0', 'host.docker.internal', '172.104.60.217', '47.128.216.140']
 
 # Cors Settings
 BACKEND_DOMAIN='http://172.104.60.217:8585/'
