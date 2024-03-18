@@ -13,13 +13,10 @@ services:
       - -c
       - |
         python manage.py migrate
-        python manage.py runserver 0.0.0.0:8585
-        # gunicorn multitenantsaas.wsgi:application --bind 0.0.0.0:8080
-        
+        python manage.py runserver 0.0.0.0:8585     
     ports:
       - "8585:8585"
     networks:
-    #   - db_network
       - web_network
     volumes:
        - appdata:/app
@@ -34,32 +31,32 @@ services:
     #     reservations:
     #       cpus: '0.0001'
     #       memory: 20M 
-  celery:
-    container_name: cloudapp-django-celery
-    build: .
-    command: 
-       - /bin/sh
-       - -c
-       - |
-        user=django
-        group=developers
-        environment=C_FORCE_ROOT="yes"
-        environment=HOME="/root",USER="django"
-        celery -A multitenantsaas worker -l info
+  # celery:
+  #   container_name: cloudapp-django-celery
+  #   build: .
+  #   command: 
+  #      - /bin/sh
+  #      - -c
+  #      - |
+  #       user=django
+  #       group=developers
+  #       environment=C_FORCE_ROOT="yes"
+  #       environment=HOME="/root",USER="django"
+  #       celery -A multitenantsaas worker -l info
         
-    volumes:
-      - .:/django_app
-    environment:
-      - DEBUG=0
-      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 172.104.60.217  [::1]
-      - CELERY_BROKER_URL="redis://redis:6379/0"
-      - CELERY_RESULT_BACKEND="redis://redis:6379/0"
-      - broker_connection_retry_on_startup="True"
-      - CELERY_TASK_ALWAYS_EAGER=True
-      - C_FORCE_ROOT=true
-      - BROKER_TRANSPORT="kombu.transport.django"
-    depends_on:
-      - redis
+  #   volumes:
+  #     - .:/django_app
+  #   environment:
+  #     - DEBUG=0
+  #     - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 172.104.60.217  [::1]
+  #     - CELERY_BROKER_URL="redis://redis:6379/0"
+  #     - CELERY_RESULT_BACKEND="redis://redis:6379/0"
+  #     - broker_connection_retry_on_startup="True"
+  #     - CELERY_TASK_ALWAYS_EAGER=True
+  #     - C_FORCE_ROOT=true
+  #     - BROKER_TRANSPORT="kombu.transport.django"
+  #   depends_on:
+  #     - redis
   redis:
       image: "redis:alpine"
       container_name: cloudapp-django-redis
@@ -105,12 +102,8 @@ services:
             
 
 networks:
-#   db_network:
-#     driver: bridge
   web_network:
     driver: bridge
-#   data_network:
-#     driver: overlay
 volumes:
   pgdata:
   redisDB:

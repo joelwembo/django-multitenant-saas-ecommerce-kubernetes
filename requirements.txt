@@ -4,8 +4,6 @@ black==23.3.0
 botocore==1.29.165
 bracex==2.3.post1
 certifi==2023.5.7
-cffi==1.15.1
-click==8.1.3
 colorama==0.4.4
 cryptography==41.0.1
 distlib==0.3.6
@@ -66,19 +64,15 @@ pytest-django
 graphene_django
 requests
 stripe
-# django-neomodel==0.0.4
-# neo4j-driver==1.2.1
-# neomodel==3.2.5
 django-widget-tweaks
 Pillow
 django-debug-toolbar
 django-data-browser
 django-extensions
-# wagtail
 sqlalchemy
-# pygraphviz
 django-ledger
 django-debug-toolbar-template-timings
-# pipenv
 django-countries
-# django-tenants
+pandas
+cffi
+click
