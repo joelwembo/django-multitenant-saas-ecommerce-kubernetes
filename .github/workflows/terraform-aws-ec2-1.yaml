@@ -2,9 +2,9 @@
 
 # on:
 #  push:
-#    branches: ['master', 'main']
+#    branches: ['master']
 #  pull_request:
-#    branches: ['master', 'main']
+#    branches: ['master']
 
 # env:
 #  # verbosity setting for Terraform log

@@ -5,9 +5,9 @@
 # #   workflow_dispatch:
 # on:
 #   push:
-#     branches: ['master' , 'main']
+#     branches: ['master']
 #   pull_request:
-#     branches: [ 'master' , 'main' ]
+#     branches: [ 'master']
 
 # jobs:
 #   django_test:
