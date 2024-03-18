@@ -102,6 +102,7 @@ jobs:
       with:
         username: ${{ env.DOCKERHUB_USERNAME }}
         password: ${{ env.DOCKERHUB_TOKEN }}
+    
     - name: Set permissions for private key
       run: |
         echo "${{ env.AWS_PRIVATE_KEY }}" > prodxsecure.pem
