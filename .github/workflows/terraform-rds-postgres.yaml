@@ -1,4 +1,4 @@
-name: "Terraform Pipeline AWS RDS"
+name: "Terraform Pipeline AWS RDS Postgres"
  
 on:
  push:
@@ -14,12 +14,12 @@ env:
  # S3 bucket for the Terraform state
  #  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE}}
 
- CONFIG_DIRECTORY: "./deployments/terraform/terraform-provision-aws-rds-postgres/terraform"
+ CONFIG_DIRECTORY: "./deployments/terraform/terraform-provision-aws-rds-postgres/terraform/"
 
  
 jobs:
  terraform:
-   name: "Terraform Pipeline AWS RDS"
+   name: "Terraform Pipeline AWS RDS Postgres"
    runs-on: ubuntu-latest
    defaults:
      run:

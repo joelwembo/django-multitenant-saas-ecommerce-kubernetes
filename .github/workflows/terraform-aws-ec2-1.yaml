@@ -12,10 +12,8 @@ env:
  # Credentials for deployment to AWS
  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
- # S3 bucket for the Terraform state
- #  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE}}
 
- CONFIG_DIRECTORY: "./deployments/terraform/terraform-aws-ec2-s3/terraform"
+ CONFIG_DIRECTORY: "./deployments/terraform/terraform-aws-ec2-s3/terraform/"
 
  
 jobs:
@@ -49,12 +47,6 @@ jobs:
        id: validate
        run: terraform validate
  
-    #  - name: Terraform plan
-    #    id: plan
-    #    if: github.event_name == 'pull_request'
-    #    run: terraform plan -no-color -input=false
-    #    continue-on-error: true
-    
      - uses: actions/github-script@v6
        if: github.event_name == 'pull_request'
        env:
