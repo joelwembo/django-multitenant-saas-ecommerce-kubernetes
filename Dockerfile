@@ -17,13 +17,5 @@ RUN pip install -r requirements.txt
 # RUN pip install django-filter
 # Copy the current directory contents into the container at /app
 COPY . /app/
-# RUN python manage.py makemigrations
-# RUN python manage.py makemigrations node_api
-# RUN python manage.py makemigrations snippets
-# RUN python manage.py makemigrations users
 
-# RUN python manage.py migrate
 EXPOSE 8585
-# gunicorn
-# CMD ["gunicorn", "--config", "gunicorn-cfg.py", "multitenantsaas.wsgi"]
-# RUN gunicorn multitenantsaas.wsgi:application --bind 0.0.0.0:8585
