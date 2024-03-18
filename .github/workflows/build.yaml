@@ -8,7 +8,7 @@ on:
 
 jobs:
     test_django_job:
-      uses: ./joelwembo/django-multitenant-saas-ecommerce-kubernetes/github/workflow/test-django.yaml@master
+      uses: ./test-django.yaml@master
     build:
       runs-on: ubuntu-latest
       needs: [test_django_job]
