@@ -15,7 +15,7 @@
 #  # S3 bucket for the Terraform state
 #  #  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE}}
 
-#  CONFIG_DIRECTORY: "./deployments/terraform/terraform-aws-ec2-github-actions-tfcloud/terraform"
+#  CONFIG_DIRECTORY: "./deployments/terraform/terraform-aws-ec2-s3/terraform"
 
  
 # jobs:
@@ -26,7 +26,7 @@
 #      run:
 #        shell: bash
 #        # We keep Terraform files in the terraform directory.
-#        working-directory: ./terraform/aws/terraform-aws-ec2-github-actions-tfcloud/terraform
+#        working-directory: ./terraform/aws/terraform-aws-ec2-s3/terraform
  
 #    steps:
 #      - name: Checkout the repository to the runner
