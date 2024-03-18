@@ -24,7 +24,7 @@ jobs:
      run:
        shell: bash
        # We keep Terraform files in the terraform directory.
-       working-directory: ./terraform/aws/terraform-aws-ec2-s3/terraform
+       working-directory: ./deployments/terraform/terraform-aws-ec2-s3/terraform
  
    steps:
      - name: Checkout the repository to the runner
@@ -79,7 +79,7 @@ jobs:
        run: exit 1
  
      - name: Terraform Apply
-       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      #  if: github.ref == 'refs/heads/main' && github.event_name == 'push'
        run: terraform apply -auto-approve -input=false -lock=false
      
 #     #  - name: Terraform Destroy All Resources
