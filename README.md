@@ -3,22 +3,6 @@
 
 ![image](https://github.com/joelwembo/django-multitenant-saas-ecommerce-kubernetes/assets/19718580/f52b4f26-b42f-4f16-81fc-3aac8cc62f82)
 
-![image](https://github.com/joelwembo/django-restful-api-postgres-kubernetes-poc/assets/19718580/2a609fc0-be6e-42dd-b954-35dbb5776b60)
-
-@author : Joel Otepa Wembo
-
-# CI/CD Workflows
-
-![1594373757598](https://github.com/joelwembo/django-multitenant-saas-ecommerce-kubernetes/assets/19718580/3e5502e5-94b8-4229-9f7f-505b7f445c8a)
-
-- Tools
-- Docker
-- Jenkins
-- Ubuntu
-- Kubernetes
-- Bash
-- Python
-- Terraform
 
 ## Introduction
 Automating deployment processes is crucial for modern web development, enhancing productivity and reliability. In this article, we focus on automating the deployment of a Django web application onto an Ubuntu Server hosted on AWS EC2.
