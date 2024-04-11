@@ -34,6 +34,7 @@ source ./venv/bin/activate ( ubuntu)
 source ./venv/Scripts/deactivate
 
 pip install -r requirements.txt
+pip freeze > requirements.txt
 
 # Local 
 
