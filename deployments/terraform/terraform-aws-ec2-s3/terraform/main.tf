@@ -4,10 +4,10 @@ variable "awsprops" {
   type = map(any)
   default = {
     region       = "us-east-1"
-    vpc          = "vpc-002df8ccc1fdc37c0"
+    vpc          = "vpc-06e427b3d907fb984"
     ami          = "ami-03caf91bb3d81b843"
     itype        = "t2.micro"
-    subnet       = "subnet-0c5ffda793d0511ec"
+    subnet       = "subnet-063a85d9139280d8a"
     publicip     = true
     keyname      = "prodxsecure"
     secgroupname = "prodxcloud-aws-ec2-lab-1"
