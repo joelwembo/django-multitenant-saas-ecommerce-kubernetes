@@ -6,8 +6,8 @@ on:
  pull_request:
    branches: ['master', 'main']
 
-# permissions:
-#     contents: write   
+permissions:
+    contents: write   
 
 env:
  # verbosity setting for Terraform log
