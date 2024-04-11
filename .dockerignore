@@ -35,3 +35,23 @@ celerybeat-schedule.dat
 celerybeat-schedule.dir
 celery.log
 deployments
+.github
+nginx
+
+
+.git/
+.terraform/
+
+# custom
+.hg/
+.svn/
+.ssh/
+github/
+gitroot/
+mercurial/
+hg/
+hgroot/
+svn/
+svnroot/
+
+.idea

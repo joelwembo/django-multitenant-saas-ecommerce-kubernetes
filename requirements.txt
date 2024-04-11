@@ -69,8 +69,8 @@ Pillow
 django-debug-toolbar
 django-data-browser
 django-extensions
-sqlalchemy
-django-ledger
+# sqlalchemy
+# django-ledger
 django-debug-toolbar-template-timings
 django-countries
 pandas

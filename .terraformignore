@@ -29,3 +29,4 @@ svnroot/
 
 # exclude all hidden dot files
 .*
+.idea

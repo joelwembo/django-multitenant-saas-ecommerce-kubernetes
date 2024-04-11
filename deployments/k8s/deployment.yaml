@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: cloudapp-django-web
-        image: cloudapp-django-web
+        image: joelwembo/cloudapp-django-web:latest
         resources:
             limits:
               memory: 200Mi
