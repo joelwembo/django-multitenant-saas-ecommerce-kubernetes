@@ -42,7 +42,7 @@ jobs:
     
      - name: Terraform init 
        id: init
-       run: terraform init -lock=false
+       run: terraform init -reconfigure -lock=false
        env:
           TF_CLI_ARGS_init: '-backend-config="token=${{ secrets.TF_API_TOKEN }}"'
  

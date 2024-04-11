@@ -6,7 +6,6 @@ terraform {
       prefix = "prodxcloud" 
     }
   }
-  
 }
 
 # terraform {
