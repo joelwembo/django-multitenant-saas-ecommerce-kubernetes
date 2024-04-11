@@ -1,7 +1,6 @@
 terraform {
   backend "remote" {  
     hostname="app.terraform.io"  
-    # token = "fRAScVeuXejCRg.atlasv1.ldkZVgazyqfSLckkPbB0hMN1eKOezsoyvkm6veipRNPyBGXG4sMdGzdWAxCSymomyIg"
     organization = "prodxcloud" 
     workspaces {
       prefix = "prodxcloud-" 
