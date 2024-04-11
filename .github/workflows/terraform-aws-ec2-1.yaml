@@ -11,14 +11,14 @@ on:
 
 env:
  # verbosity setting for Terraform log
- TF_LOG: INFO
- # Credentials for deployment to AWS
- AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
- AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
- TF_CLOUD_ORGANIZATION: "prodxcloud"
- TF_WORKSPACE: "prodxcloud"
- TF_API_TOKEN: ${{ secrets.TF_API_TOKEN}}
- CONFIG_DIRECTORY: "./deployments/terraform/terraform-aws-ec2-s3/terraform/"
+  TF_LOG: INFO
+  # Credentials for deployment to AWS
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  TF_CLOUD_ORGANIZATION: "prodxcloud"
+  TF_WORKSPACE: "prodxcloud"
+  TF_API_TOKEN: ${{ secrets.TF_API_TOKEN}}
+  CONFIG_DIRECTORY: "./deployments/terraform/terraform-aws-ec2-s3/terraform/"
 
  
 jobs:
@@ -43,7 +43,7 @@ jobs:
      - name: Terraform init 
        id: init
        run: terraform init -lock=false
-        env:
+       env:
           TF_CLI_ARGS_init: '-backend-config="token=${{ secrets.TF_API_TOKEN }}"'
  
      - name: Terraform format
