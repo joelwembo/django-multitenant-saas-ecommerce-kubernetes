@@ -7,7 +7,6 @@
 @author : Joel Otepa Wembo
 
 
-
 # Automating Django , Celery, Redis and postgres deployment to AWS EC2 using Terraform ( Complete Guide) !
 
 In this article, we will study how we can automate the deployment of our existing Django web application to Ubuntu Server in AWS EC2 Using terraform and CloudFormation. We will also see how to use the public IP of the EC2 instance to access the Django application. For this article, you should know about setting up EC2 in AWS. The Django application will be fully containerized along side with Celery, Redis, and Postgres. We have provided 2 options for you to deploy with postgres either using another docker container or by provisioning your postgres using AWS RDS for PostgreSQL. We will leverage both Terraform and Github actions to automate the deployment process, making it more efficient and error-free.
