@@ -61,11 +61,11 @@ INSTALLED_APPS = [
     'rest_framework',
     "corsheaders",
     'graphene_django',
-    'django_celery_results',
-    'django_celery_beat',
-    'django_filters',
+    # 'django_celery_results',
+    # 'django_celery_beat',
+    # 'django_filters',
     'drf_yasg',
-    'widget_tweaks',
+    # 'widget_tweaks',
     'apps.home',
     'apps.snippets',
     'apps.users',
@@ -151,15 +151,15 @@ WSGI_APPLICATION = 'multitenantsaas.wsgi.application'
 # config.DATABASE_URL = 'bolt://neo4j+s://f89c638e.databases.neo4j.io:7687'
 
 # SQLite Database 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+    }
+}
 
 # Database postgres Docker 
-# Docker host : host.docker.internal  or db cloudapp-django-postgresdb  3.0.55.190
+# Docker host : host.docker.internal  or database service name: cloudapp-django-postgresdb
 # docker inspect cloudapp-django-postgresdb | grep "IPAddress"
 DATABASES = {
     'default': {
@@ -167,21 +167,10 @@ DATABASES = {
         'NAME': os.environ.get("POSTGRES_NAME", "DB2"),
         'USER': os.environ.get("POSTGRES_USER", "postgres"),
         'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "postgres"),
-        'HOST': os.environ.get("POSTGRES_HOST", "localhost"),
+        'HOST': os.environ.get("POSTGRES_HOST", "cloudapp-django-postgresdb"),
         'PORT': int(os.environ.get("POSTGRES_PORT", "5432")),
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django_tenants.postgresql_backend',
-#         'NAME': 'os.environ.get("POSTGRES_NAME", "DB2")',
-#         'USER': os.environ.get("POSTGRES_USER", "postgres"),
-#         'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "postgres"),
-#         'HOST': os.environ.get("POSTGRES_HOST", "localhost"),
-#         'PORT': int(os.environ.get("POSTGRES_PORT", "5432")),
-#     }
-# }
 
 # DATABASE_ROUTERS = (
 #     'django_tenants.routers.TenantSyncRouter',

@@ -48,15 +48,15 @@ drf_yasg
 python-decouple==3.1
 unipath
 django-cors-headers==4.2.0
-celery
-flower==1.2.0 
-django_celery_results
-django-celery-beat
+# celery
+# flower==1.2.0 
+# django_celery_results
+# django-celery-beat
 djangorestframework
 djangorestframework-simplejwt
-redis
+# redis
 psycopg2-binary
-django-redis==5.0.0
+# django-redis==5.0.0
 django-filter
 gunicorn==21.2.0
 pytest
@@ -64,7 +64,7 @@ pytest-django
 graphene_django
 requests
 stripe
-django-widget-tweaks
+# django-widget-tweaks
 Pillow
 django-debug-toolbar
 django-data-browser
