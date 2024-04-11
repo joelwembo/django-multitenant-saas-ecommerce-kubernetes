@@ -21,7 +21,7 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins
 sudo apt-get update
 sudo apt-get install jenkins --assume-yes
 # sudo service jenkins status
-echo 'Jenkins successfully installer'
+echo 'Jenkins successfully installer : password : ca011fdc759b432e8f45f60d00f687ea'
 # Postgres Installation
 sudo apt update
 # enable repository to install postgresql
