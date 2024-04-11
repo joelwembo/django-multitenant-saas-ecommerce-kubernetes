@@ -1,6 +1,6 @@
 variable "aws_region" {
   type    = string
-  default = "ap-southeast-1"
+  default = "us-east-1"
 }
 
 variable "backend_organization" {
@@ -70,7 +70,7 @@ variable "instance_publicip" {
 
 variable "aws_availability_zone" {
   type    = string
-  default = "ap-southeast-1b"
+  default = "us-east-1b"
 }
 
 
@@ -101,8 +101,8 @@ variable "ingress_rules" {
 
     "Jenkins port" = {
       "description" = "For Jenkins"
-      "from_port"   = "8081"
-      "to_port"     = "8081"
+      "from_port"   = "8080"
+      "to_port"     = "8080"
       "protocol"    = "tcp"
       "cidr_blocks" = ["0.0.0.0/0"]
     },

@@ -7,7 +7,6 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 # Copy the requirements file into the container at /app
 COPY requirements.txt /app/
-COPY gunicorn-cfg.py /app/
 # COPY deployments ./app/deployments/
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools

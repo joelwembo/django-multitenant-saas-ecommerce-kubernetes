@@ -8,15 +8,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      - DJANGO_SETTINGS_MODULE=multitenantsaas.settings
-      - DJANGO_LOG_LEVEL=DEBUG
-      - ENV=local
-      - POSTGRES_NAME=DB2
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASS=postgres
-      - POSTGRES_HOST=cloudapp-django-postgresdb
-      - POSTGRES_PORT=5432  
+    # environment:
+    #   - DJANGO_SETTINGS_MODULE=multitenantsaas.settings
+    #   - DJANGO_LOG_LEVEL=DEBUG
+    #   - ENV=local
+    #   - POSTGRES_NAME=DB2
+    #   - POSTGRES_USER=postgres
+    #   - POSTGRES_PASS=postgres
+    #   - POSTGRES_HOST=cloudapp-django-postgresdb
+    #   - POSTGRES_PORT=5432  
     command:
       - /bin/sh
       - -c
@@ -33,14 +33,14 @@ services:
     depends_on:
       - cloudapp-django-postgresdb
       # - redis 
-    deploy:
-      resources:
-        limits:
-          cpus: '0.001'
-          memory: 50M
-        reservations:
-          cpus: '0.0001'
-          memory: 20M 
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '0.001'
+    #       memory: 50M
+    #     reservations:
+    #       cpus: '0.0001'
+    #       memory: 20M 
   # celery:
   #   container_name: cloudapp-django-celery
   #   build: .
@@ -116,7 +116,7 @@ networks:
     driver: bridge
 volumes:
   pgdata:
-  redisDB:
+  # redisDB:
   appdata:
    driver: local
 
