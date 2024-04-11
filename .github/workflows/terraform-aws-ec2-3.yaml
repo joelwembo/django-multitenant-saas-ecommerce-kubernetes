@@ -18,7 +18,7 @@ env:
   TF_CLOUD_ORGANIZATION: "prodxcloud"
   TF_WORKSPACE: "prodxcloud"
   TF_API_TOKEN: ${{ secrets.TF_API_TOKEN}}
-  CONFIG_DIRECTORY: "./deployments/terraform/terraform-aws-ec2-s3/terraform/"
+  CONFIG_DIRECTORY: "./deployments/terraform/terraform-aws-ec2-tf/terraform/"
 
  
 jobs:
@@ -29,7 +29,7 @@ jobs:
      run:
        shell: bash
        # We keep Terraform files in the terraform directory.
-       working-directory: ./deployments/terraform/terraform-aws-ec2-s3/terraform
+       working-directory: ./deployments/terraform/terraform-aws-ec2-tf/terraform
  
    steps:
      - name: Checkout the repository to the runner
@@ -53,8 +53,6 @@ jobs:
      - name: Terraform validate
        id: validate
        run: terraform validate
-      #  entrypoint: sh
-      #     args: -c "echo credentials app.terraform.io { token = \\\"${TFE_TOKEN}\\\" } > ~/.terraformrc; /src/main.sh"
        env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN}}
           TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
@@ -90,14 +88,14 @@ jobs:
     #    if: steps.plan.outcome == 'failure'
     #    run: exit 1
  
-    #  - name: Terraform Apply
-    #   #  if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    #    run: terraform apply -auto-approve -input=false -lock=false
-    #    env:
-    #       TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
-     
-     - name: Terraform Destroy All Resources
-       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-       run: terraform destroy -auto-approve -input=false -lock=false  
+     - name: Terraform Apply
+      #  if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+       run: terraform apply -auto-approve -input=false -lock=false
        env:
           TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
+     
+    #  - name: Terraform Destroy All Resources
+    #    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    #    run: terraform destroy -auto-approve -input=false -lock=false  
+    #    env:
+    #       TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
