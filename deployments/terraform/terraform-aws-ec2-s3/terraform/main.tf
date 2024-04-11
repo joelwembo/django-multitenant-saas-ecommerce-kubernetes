@@ -53,7 +53,7 @@ resource "aws_security_group" "prod-sec-sg" {
 
 
 # instance identity
-resource "aws_instance" "ubuntu-instance-micro" {
+resource "aws_instance" "project-iac" {
   ami                         = lookup(var.awsprops, "ami")
   instance_type               = lookup(var.awsprops, "itype")
   subnet_id                   = lookup(var.awsprops, "subnet") #FFXsubnet2
@@ -102,6 +102,6 @@ resource "aws_instance" "ubuntu-instance-micro" {
 
 
 output "ec2instance" {
-  value = aws_instance.ubuntu-instance-micro.public_ip
+  value = aws_instance.project-iac.public_ip
 }
 
