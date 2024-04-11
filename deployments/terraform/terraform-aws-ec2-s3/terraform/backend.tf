@@ -3,12 +3,11 @@ terraform {
     hostname="app.terraform.io"  
     organization = "prodxcloud" 
     workspaces {
-      prefix = "prodxcloud-" 
+      name = "prodxcloud" 
     }
   }
   
 }
-
 
 # terraform {
 #   backend "s3" {
