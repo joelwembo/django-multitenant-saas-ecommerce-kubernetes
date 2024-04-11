@@ -6,8 +6,8 @@ on:
  pull_request:
    branches: ['master', 'main']
 
-permissions:
-    contents: write   
+# permissions:
+#     contents: write   
 
 env:
  # verbosity setting for Terraform log
@@ -53,6 +53,8 @@ jobs:
      - name: Terraform validate
        id: validate
        run: terraform validate
+       entrypoint: sh
+          args: -c "echo credentials app.terraform.io { token = \\\"${TFE_TOKEN}\\\" } > ~/.terraformrc; /src/main.sh"
        env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN}}
           TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
