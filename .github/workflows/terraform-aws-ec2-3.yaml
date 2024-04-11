@@ -88,14 +88,14 @@ jobs:
     #    if: steps.plan.outcome == 'failure'
     #    run: exit 1
  
-     - name: Terraform Apply
-      #  if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-       run: terraform apply -auto-approve -input=false -lock=false
+    #  - name: Terraform Apply
+    #   #  if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    #    run: terraform apply -auto-approve -input=false -lock=false
       #  env:
       #     TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
      
-    #  - name: Terraform Destroy All Resources
-    #    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    #    run: terraform destroy -auto-approve -input=false -lock=false  
-    #    env:
-    #       TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
+     - name: Terraform Destroy All Resources
+       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+       run: terraform destroy -auto-approve -input=false -lock=false  
+      #  env:
+      #     TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}

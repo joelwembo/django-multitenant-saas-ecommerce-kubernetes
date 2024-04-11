@@ -56,7 +56,7 @@ resource "aws_security_group" "prod-sec-sg" {
 resource "aws_instance" "project-iac" {
   ami                         = lookup(var.awsprops, "ami")
   instance_type               = lookup(var.awsprops, "itype")
-  subnet_id                   = lookup(var.awsprops, "subnet") #FFXsubnet2
+  subnet_id                   = lookup(var.awsprops, "subnet")
   associate_public_ip_address = lookup(var.awsprops, "publicip")
   key_name                    = lookup(var.awsprops, "keyname")
 
