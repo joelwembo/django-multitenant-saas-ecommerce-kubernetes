@@ -47,13 +47,13 @@ resource "aws_security_group" "prod-sec-sg" {
   }
 
   lifecycle {
-    create_before_destroy = true
+    create_before_destroy = false
   }
 }
 
 
 # instance identity
-resource "aws_instance" "project-iac" {
+resource "aws_instance" "project-iac-2" {
   ami                         = lookup(var.awsprops, "ami")
   instance_type               = lookup(var.awsprops, "itype")
   subnet_id                   = lookup(var.awsprops, "subnet")
@@ -66,7 +66,7 @@ resource "aws_instance" "project-iac" {
   ]
   root_block_device {
     delete_on_termination = true
-    volume_size           = 50
+    volume_size           = 40
     volume_type           = "gp2"
   }
   tags = {
@@ -102,6 +102,6 @@ resource "aws_instance" "project-iac" {
 
 
 output "ec2instance" {
-  value = aws_instance.project-iac.public_ip
+  value = aws_instance.project-iac-2.public_ip
 }
 
