@@ -3,7 +3,7 @@ terraform {
     hostname="app.terraform.io"  
     organization = "prodxcloud" 
     workspaces {
-      prefix = "prodxcloud-" 
+      prefix = "prodxcloud" 
     }
   }
   
