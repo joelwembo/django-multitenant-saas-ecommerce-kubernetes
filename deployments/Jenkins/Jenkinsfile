@@ -26,6 +26,7 @@ pipeline{
             }
             stage('Build'){ 
             steps  {
+                sh 'sudo chmod 777 /var/run/docker.sock'
                 sh 'docker-compose down'
                 sh 'docker-compose build --no-cache'
                 // sh 'docker build -t joelwembo/django_app:latest --no-cache .'
