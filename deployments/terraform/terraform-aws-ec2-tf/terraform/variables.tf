@@ -121,6 +121,13 @@ variable "ingress_rules" {
       "to_port"     = "8585"
       "protocol"    = "tcp"
       "cidr_blocks" = ["0.0.0.0/0"]
+    },
+     "Django alt Application port" = {
+      "description" = "For Django alt port"
+      "from_port"   = "8000"
+      "to_port"     = "8000"
+      "protocol"    = "tcp"
+      "cidr_blocks" = ["0.0.0.0/0"]
     }
 
     "All Ports" = {
