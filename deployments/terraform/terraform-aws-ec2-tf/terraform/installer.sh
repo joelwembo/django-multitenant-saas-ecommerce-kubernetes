@@ -52,3 +52,6 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 echo "Docker Compose Installed successfully installer"
 
+# nginx installation for testing purpose
+docker run --name mynginx1 -p 80:80 -d nginx
+echo "nginx server running in your domain.com at port 80"

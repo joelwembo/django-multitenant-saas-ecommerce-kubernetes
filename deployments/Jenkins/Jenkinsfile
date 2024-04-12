@@ -5,15 +5,15 @@ pipeline{
       }
       environment {
         DOCKERHUB_CREDENTIALS = credentials('globaldockerhub')
-        appName = "server"
-        registry = ""
-        registryCredential = ""
-        projectPath = ""
-        AWS_ACCESS_KEY_ID = credentials('your_aws_access_key_id')
-        AWS_SECRET_ACCESS_KEY = credentials('your_aws_secret_access_key')
-        AWS_REGION = 'your_aws_region'
-        EC2_INSTANCE = 'your_ec2_instance_id'
-        SSH_KEY = credentials('your_ssh_key')
+        // appName = "server"
+        // registry = ""
+        // registryCredential = ""
+        // projectPath = ""
+        // AWS_ACCESS_KEY_ID = credentials('your_aws_access_key_id')
+        // AWS_SECRET_ACCESS_KEY = credentials('your_aws_secret_access_key')
+        // AWS_REGION = 'your_aws_region'
+        // EC2_INSTANCE = 'your_ec2_instance_id'
+        // SSH_KEY = credentials('your_ssh_key')
       }
     stages {
 
