@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   web:
-    image: django_app
+    image: django_app:latest
     container_name: cloudapp-django-web
     env_file: .env
     restart: always
