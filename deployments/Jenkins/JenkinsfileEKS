@@ -49,7 +49,7 @@ pipeline {
                     sh "aws eks --region us-east-1 update-kubeconfig --name mycluster"
                     
                     // Deploy to EKS // k8s deployments folder
-                    sh "kubectl apply -f deployments/k8s/deployment.yaml --namespace=${EKS_NAMESPACE}"
+                    sh "kubectl apply -f deployments/k8s/deployment.yaml --namespace=default"
                 }
             }
         }
