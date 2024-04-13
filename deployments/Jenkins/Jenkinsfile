@@ -93,8 +93,7 @@ pipeline{
 
          stage('Deploy to AWS') {
             steps {
-                 sh 'processing deployment to aws ec2'
-                 sh 'processing deployment to aws eks'         
+                sh 'docker ps'      
             }
         } 
     }
