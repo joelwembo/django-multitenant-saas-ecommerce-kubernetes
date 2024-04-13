@@ -27,7 +27,7 @@ pipeline{
             stage('Build'){ 
             steps  {
                 sh 'docker-compose down'
-                sh 'docker-compose build --no-cache'
+                // sh 'docker-compose build --no-cache'
                 // sh 'docker build -t joelwembo/cloudapp-django-web:latest --no-cache .'
                 }
             }
