@@ -26,7 +26,7 @@ pipeline{
             }
             stage('Build'){ 
             steps  {
-                // sh 'docker-compose down'
+                sh 'docker-compose down'
                 sh 'docker-compose build --no-cache'
                 // sh 'docker build -t joelwembo/cloudapp-django-web:latest --no-cache .'
                 }
@@ -93,8 +93,8 @@ pipeline{
 
          stage('Deploy to AWS') {
             steps {
-                 sh 'processing deployment to aws ec2"'
-                 sh 'processing deployment to aws eks"'         
+                 sh 'processing deployment to aws ec2'
+                 sh 'processing deployment to aws eks'         
             }
         } 
     }

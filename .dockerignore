@@ -47,6 +47,7 @@ nginx
 .svn/
 .ssh/
 github/
+.github/
 gitroot/
 mercurial/
 hg/
