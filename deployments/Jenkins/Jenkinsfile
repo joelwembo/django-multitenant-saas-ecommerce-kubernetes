@@ -6,7 +6,7 @@ pipeline{
       environment {
         DOCKERHUB_CREDENTIALS = credentials('globaldockerhub')
         // appName = "server"
-        // registry = ""
+        registry = ""
         // registryCredential = ""
         // projectPath = ""
         // AWS_ACCESS_KEY_ID = credentials('your_aws_access_key_id')
@@ -26,10 +26,9 @@ pipeline{
             }
             stage('Build'){ 
             steps  {
-                // sh 'sudo chmod 777 /var/run/docker.sock'
                 // sh 'docker-compose down'
-                // sh 'docker-compose build --no-cache'
-                sh 'docker build -t joelwembo/django_app:latest --no-cache .'
+                sh 'docker-compose build --no-cache'
+                // sh 'docker build -t joelwembo/cloudapp-django-web:latest --no-cache .'
                 }
             }
             stage('Login') {
@@ -42,8 +41,8 @@ pipeline{
            stage('Docker Push') {
                 steps {
                     sh 'docker images'
-                    sh 'docker images --filter "reference=django_app*"' 
-                    sh 'docker push joelwembo/django_app:latest'
+                    sh 'docker images --filter "reference=cloudapp-django-web*"' 
+                    sh 'docker push joelwembo/cloudapp-django-web:latest'
                 }
             }
             stage('Run the Application'){
@@ -51,11 +50,11 @@ pipeline{
                     sh 'docker-compose up -d'
                 }
             }
-            stage('Execute Manuel Tests'){
-                steps {
-                    sh 'echo "Migration Operation Completed , Please Check the logs status"'
-                }
-            }
+            // stage('Execute Manuel Tests'){
+            //     steps {
+            //         sh 'echo "Migration Operation Completed , Please Check the logs status"'
+            //     }
+            // }
 
         //   stage('k8s Deployment') {
         //   steps {
@@ -64,13 +63,13 @@ pipeline{
         //     sh 'kubectl config use-context minikube'
         //     sh 'kubectl cluster-info'
         //     dir('deployments/k8s') {
-        //       sh 'kubectl delete namespace django_app'
-        //       sh 'kubectl create namespace django_app'
-        //       sh 'kubectl config set-context --current --namespace=django_app'
+        //       sh 'kubectl delete namespace cloudapp-django-web'
+        //       sh 'kubectl create namespace cloudapp-django-web'
+        //       sh 'kubectl config set-context --current --namespace=cloudapp-django-web'
         //       sh 'kubectl apply -f deployment.yaml'
         //     }    
         //     sh 'kubectl get services && kubectl get pods'
-        //     sh 'minikube service django_app -n  django_app &'
+        //     sh 'minikube service cloudapp-django-web -n  cloudapp-django-web &'
         //     sh 'exit 0'
         //    }
         //  } 
@@ -94,13 +93,8 @@ pipeline{
 
          stage('Deploy to AWS') {
             steps {
-                 dir('deployments') {
-                    sh "pwd"
-                    sh "chmod +x -R ./deploy-aws-ec2.sh"
-                    sh 'docker images --filter "reference=django_app*"' 
-                    sh './deploy-aws-ec2.sh'
-                 }
-              
+                 sh 'processing deployment to aws ec2"'
+                 sh 'processing deployment to aws eks"'         
             }
         } 
     }
