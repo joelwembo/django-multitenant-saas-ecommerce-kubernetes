@@ -1,12 +1,12 @@
-# terraform {
-#   backend "remote" {  
-#     hostname="app.terraform.io"  
-#     organization = "prodxcloud" 
-#     workspaces {
-#       prefix = "prodxcloud" 
-#     }
-#   }
-# }
+terraform {
+  backend "remote" {  
+    hostname="app.terraform.io"  
+    organization = "prodxcloud" 
+    workspaces {
+      prefix = "prodxcloud" 
+    }
+  }
+}
 
 terraform {
   backend "s3" {
