@@ -1,19 +1,7 @@
-anyio==3.7.0
-attrs==23.1.0
-black==23.3.0
-botocore==1.29.165
-bracex==2.3.post1
-certifi==2023.5.7
 colorama==0.4.4
 cryptography==41.0.1
 distlib==0.3.6
 docutils==0.16
-filelock==3.12.1
-h11==0.14.0
-httpcore==0.17.2
-httpx==0.24.1
-idna==3.4
-Jinja2==3.1.2
 jmespath==1.0.1
 jsonschema==4.17.3
 markdown-it-py==3.0.0
@@ -21,29 +9,20 @@ MarkupSafe==2.1.3
 mdurl==0.1.2
 mypy-extensions==1.0.0
 nodeenv==1.8.0
-packaging==23.1
-pathspec==0.11.1
-platformdirs==3.5.3
-pyasn1==0.5.0
-pycparser==2.21
-pydantic==1.10.9
+# packaging==23.1
+# pyasn1==0.5.0
+# pycparser==2.21
+# pydantic==1.10.9
 Pygments==2.15.1
-pyrsistent==0.19.3
+# pyrsistent==0.19.3
 python-dateutil==2.8.2
 python-dotenv==1.0.0
 resolvelib==1.0.1
-rich==13.4.2
-rsa==4.7.2
-s3transfer==0.6.1
-six==1.16.0
-sniffio==1.3.0
-subprocess-tee==0.4.1
-tomlkit==0.11.8
-typing_extensions==4.6.3
+# rich==13.4.2
+# rsa==4.7.2
+# six==1.16.0
+# sniffio==1.3.0
 urllib3==1.26.16
-virtualenv==20.23.0
-wcmatch==8.4.1
-yamllint==1.32.0
 drf_yasg
 python-decouple==3.1
 unipath
@@ -58,7 +37,7 @@ redis
 psycopg2-binary
 django-redis==5.0.0
 django-filter
-gunicorn==21.2.0
+# gunicorn==21.2.0
 pytest
 pytest-django
 graphene_django
@@ -69,10 +48,5 @@ Pillow
 django-debug-toolbar
 django-data-browser
 django-extensions
-# sqlalchemy
-# django-ledger
 django-debug-toolbar-template-timings
 django-countries
-pandas
-cffi
-click

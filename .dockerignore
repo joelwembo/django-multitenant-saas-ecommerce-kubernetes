@@ -35,6 +35,8 @@ celerybeat-schedule.dat
 celerybeat-schedule.dir
 celery.log
 deployments
+./deployments
+./bin
 .github
 nginx
 

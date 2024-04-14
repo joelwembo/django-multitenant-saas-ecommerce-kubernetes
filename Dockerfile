@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9
+FROM python:3.11-slim-bullseye
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -7,14 +7,22 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 # Copy the requirements file into the container at /app
 COPY requirements.txt /app/
-# COPY deployments ./app/deployments/
+COPY apps /app/
+COPY media /app/
+COPY multitenantsaas /app/
+COPY staticfiles /app/
+COPY tests /app/
+COPY .env /app/
+COPY manage.py /app/
+
+
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 # Install any needed packages specified in requirements.txt
 # RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install -r requirements.txt
 # Copy the current directory contents into the container at /app
-COPY . /app/
+# COPY . /app/
 
 EXPOSE 8585
 EXPOSE 8000

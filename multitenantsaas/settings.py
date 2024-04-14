@@ -161,16 +161,16 @@ DATABASES = {
 # Database postgres Docker 
 # Docker host : host.docker.internal  or database service name: cloudapp-django-postgresdb
 # docker inspect cloudapp-django-postgresdb | grep "IPAddress"
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get("POSTGRES_NAME", "DB4"),
-        'USER': os.environ.get("POSTGRES_USER", "postgres"),
-        'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "postgres"),
-        'HOST': os.environ.get("POSTGRES_HOST", "cloudapp-django-postgresdb"),
-        'PORT': int(os.environ.get("POSTGRES_PORT", "5432")),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get("POSTGRES_NAME", "DB4"),
+#         'USER': os.environ.get("POSTGRES_USER", "postgres"),
+#         'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "postgres"),
+#         'HOST': os.environ.get("POSTGRES_HOST", "cloudapp-django-postgresdb"),
+#         'PORT': int(os.environ.get("POSTGRES_PORT", "5432")),
+#     }
+# }
 
 # DATABASE_ROUTERS = (
 #     'django_tenants.routers.TenantSyncRouter',
