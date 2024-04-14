@@ -35,7 +35,7 @@ CORS_ORIGIN_ALLOW_ALL=True
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1",
     "http://localhost",
-    "https://792jz173sj.execute-api.us-east-1.amazonaws.com"
+    "https://792jz173sj.execute-api.us-east-1.amazonaws.com",
     "https://socialcloudsync.com",
     "http://52.90.4.135",
     "http://52.90.4.135:8585"
