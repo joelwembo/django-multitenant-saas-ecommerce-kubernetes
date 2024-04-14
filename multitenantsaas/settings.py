@@ -33,11 +33,13 @@ PAYMENT_CANCEL_URL='http://172.104.60.217:8585/api/v1/products/cancel/'
 CORS_ORIGIN_ALLOW_ALL=True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://172.104.60.217:3000",
-    "http://localhost:3000",
-    "http://1270.0.0.1:3000",
     "http://127.0.0.1",
-    "http://localhost"
+    "http://localhost",
+    "https://792jz173sj.execute-api.us-east-1.amazonaws.com/"
+    "https://socialcloudsync.com/",
+    "socialcloudsync.com"
+    "52.90.4.135",
+    "52.90.4.135:8585/"
 ]
 
 CORS_ALLOW_CREDENTIALS=True
