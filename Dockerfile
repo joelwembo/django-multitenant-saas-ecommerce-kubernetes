@@ -10,7 +10,7 @@ COPY requirements.txt /app/
 COPY apps /app/
 COPY media /app/
 COPY multitenantsaas /app/
-COPY staticfiles /app/
+# COPY staticfiles /app/
 COPY tests /app/
 COPY .env /app/
 COPY manage.py /app/
