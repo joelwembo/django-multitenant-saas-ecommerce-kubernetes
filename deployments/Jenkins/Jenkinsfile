@@ -26,9 +26,9 @@ pipeline{
             }
             stage('Build'){ 
             steps  {
-                sh 'docker-compose down'
+                // sh 'docker-compose down'
                 // sh 'docker-compose build --no-cache'
-                // sh 'docker build -t joelwembo/cloudapp-django-web:latest --no-cache .'
+                sh 'docker build -t joelwembo/cloudapp-django-web:latest --no-cache .'
                 }
             }
             stage('Login') {
@@ -47,7 +47,8 @@ pipeline{
             }
             stage('Run the Application'){
                 steps {
-                    sh 'docker-compose up -d'
+                    sh 'docker images'
+                    // sh 'docker-compose up -d'
                 }
             }
             // stage('Execute Manuel Tests'){
