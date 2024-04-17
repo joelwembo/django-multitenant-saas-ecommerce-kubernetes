@@ -6,7 +6,7 @@ NAMESPACE="cloudapp-django-web"
 DOCKER_IMAGE="joelwembo/cloudapp-django-web:latest"
 DEPLOYMENT_NAME="cloudapp-django-web"
 SERVICE_NAME="mycluster"
-PORT=80
+PORT=8585
 
 # Set KUBECONFIG environment variable
 export KUBECONFIG="$KUBECONFIG"
@@ -18,4 +18,4 @@ kubectl apply -f deployments/k8s/deployment.yaml
 kubectl set image deployment/$DEPLOYMENT_NAME $DEPLOYMENT_NAME=$DOCKER_IMAGE -n $NAMESPACE
 
 # Expose the deployment as a service
-kubectl expose deployment cloudapp-django-web --type=LoadBalancer --port=80 --target-port=8585-n $NAMESPACE --name=cloudapp-django-web
+kubectl expose deployment $DEPLOYMENT_NAME --type=LoadBalancer --port=80 --target-port=$PORT -n $NAMESPACE --name=cloudapp-django-web
