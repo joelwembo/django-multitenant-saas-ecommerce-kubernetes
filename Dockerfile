@@ -24,5 +24,10 @@ RUN pip install -r requirements.txt
 # Copy the current directory contents into the container at /app
 # COPY . /app/
 
+# Run vulnerability scan on build image
+FROM build AS vulnscan
+COPY --from=aquasec/trivy:latest /usr/local/bin/trivy /usr/local/bin/trivy
+RUN trivy rootfs --no-progress /
+
 EXPOSE 8585
 EXPOSE 8000
