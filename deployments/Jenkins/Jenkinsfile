@@ -24,17 +24,38 @@ pipeline{
                 }
         
             }
-            stage('Build'){ 
-            steps  {
-                // sh 'docker-compose down'
-                // sh 'docker-compose build --no-cache'
-                sh 'docker build -t joelwembo/cloudapp-django-web:latest --no-cache .'
+
+            stage('SonarQube Analysis') {
+                environment {
+                    // Set environment variables required for SonarQube scanner
+                    SONAR_SCANNER_HOME = tool 'SonarQube Scanner'
                 }
+                steps {
+                    // Run SonarQube scanner
+                    script {
+                        withSonarQubeEnv('SonarQube Server') {
+                            sh "${env.SONAR_SCANNER_HOME}/bin/sonar-scanner"
+                        }
+                    }
+                }
+           }
+            stage('Build'){ 
+                steps  {
+                    // sh 'docker-compose down'
+                    // sh 'docker-compose build --no-cache'
+                    sh 'docker build -t joelwembo/cloudapp-django-web:latest --no-cache .'
+                    }
             }
             stage('Login') {
                 steps {
                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                     
+                }
+            }
+
+            stage('Trivy Scan') {
+                steps {
+                    sh 'trivy docker build -t joelwembo/cloudapp-django-web:latest'
                 }
             }
 
