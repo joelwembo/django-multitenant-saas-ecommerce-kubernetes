@@ -63,13 +63,13 @@ pipeline{
                 steps {
                     sh 'docker images'
                     sh 'docker images --filter "reference=cloudapp-django-web*"' 
-                    // sh 'docker push joelwembo/cloudapp-django-web:latest'
+                    sh 'docker push joelwembo/cloudapp-django-web:latest'
                 }
             }
             stage('Run the Application'){
                 steps {
                     sh 'docker images'
-                    // sh 'docker-compose up -d'
+                    sh 'docker-compose up -d'
                 }
             }
             // stage('Execute Manuel Tests'){
@@ -115,6 +115,7 @@ pipeline{
 
          stage('Deploy to AWS') {
             steps {
+                // ec2 deploymnet code goes here
                 sh 'docker ps'      
             }
         } 
