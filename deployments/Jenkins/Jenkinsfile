@@ -9,11 +9,11 @@ pipeline{
         registry = ""
         registryCredential = ""
         projectPath = ""
-        AWS_ACCESS_KEY_ID = credentials('your_aws_access_key_id')
-        AWS_SECRET_ACCESS_KEY = credentials('your_aws_secret_access_key')
-        AWS_REGION = 'your_aws_region'
-        EC2_INSTANCE = 'your_ec2_instance_id'
-        SSH_KEY = credentials('your_ssh_key')
+        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        AWS_REGION = credentials('AWS_REGION')
+        EC2_INSTANCE = credentials('EC2_INSTANCE')
+        AWS_SSH_KEY = credentials('AWS_SSH_KEY')
       }
     stages {
 

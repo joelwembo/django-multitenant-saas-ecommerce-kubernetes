@@ -71,13 +71,8 @@ pipeline{
                     sh 'docker-compose up -d'
                 }
             }
-            stage('Execute Manuel Tests'){
-                steps {
-                    sh 'echo "Migration Operation Completed , Please Check the logs status"'
-                }
-            }
 
-         stage('Deploy to AWS') {
+         stage('Deploy to AWS EC2') {
             steps {
                  dir('deployments') {
                     sh "pwd"
