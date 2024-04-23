@@ -9,9 +9,8 @@ on:
 permissions:
     contents: write   
 
-
 jobs:
-  DemoSonarCloudSCan:
+  CodeScan-Analysis:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
