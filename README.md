@@ -3,9 +3,10 @@
 
 ![image](https://github.com/joelwembo/django-multitenant-saas-ecommerce-kubernetes/assets/19718580/f52b4f26-b42f-4f16-81fc-3aac8cc62f82)
 
-- [@Author](https://www.joelotepawembo.com)
+- [@Joel O. Wembo](https://www.joelotepawembo.com)
 - [@twitter](twitter.com/joelwembo1)
 - [@linkedin](https://www.linkedin.com/in/joelotepawembo)
+
 
 
 ## Introduction
@@ -167,10 +168,11 @@ tenant = Client(schema_name="test", name="test Company")
 domain = Domain(domain="btest.localhost", tenant=tenant, is_primary=True)
 
 
-# For more information about the author contact: 
+Thank you for Reading !! 🙌🏻, see you in the next article.🤘
 
+# For more information about the author visit
 
-- [@Author](https://www.joelotepawembo.com)
+- [@Joel O. Wembo](https://www.joelotepawembo.com)
 - [@twitter](twitter.com/joelwembo1)
 - [@linkedin](https://www.linkedin.com/in/joelotepawembo)
 
