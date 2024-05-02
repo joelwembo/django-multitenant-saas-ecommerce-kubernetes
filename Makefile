@@ -5,7 +5,7 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := help
 
 DOCKER_USERNAME ?= joelwembo
-APPLICATION_NAME ?= saas-ecommerce-kubernetes
+APPLICATION_NAME ?= prodxcloud-django-web
 GIT_HASH ?= $(shell git log --format="%h" -n 1)
 
 
