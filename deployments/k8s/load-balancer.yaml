@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: load-balancer
   labels:
-    app: web_cloudapp_django
+    app: web_prodxcloud_django
 spec:
   type: LoadBalancer
   ports:
@@ -12,4 +12,4 @@ spec:
     protocol: TCP
     nodePort: 31009
   selector:
-    app: web_cloudapp_django
+    app: web_prodxcloud_django

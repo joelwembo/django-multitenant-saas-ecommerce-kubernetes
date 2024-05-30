@@ -8,7 +8,7 @@ pipeline {
         DOCKER_REGISTRY_URL = 'docker.io'
         EKS_CLUSTER_NAME = 'mycluster'
         EKS_NAMESPACE = 'default'
-        APP_NAME = 'joelwembo/cloudapp-django-web'
+        APP_NAME = 'joelwembo/prodxcloud-django-web'
         DOCKER_IMAGE_TAG = 'latest'
     }
     

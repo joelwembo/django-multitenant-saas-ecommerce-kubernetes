@@ -75,8 +75,8 @@
 #             context: ./
 #             # Note: tags has to be all lower-case
 #             tags: |
-#               joelwembo/cloudapp-engine-django:${{ github.sha }}
-#               ghcr.io/joelwembo/cloudapp-engine-django:${{ github.sha }}
+#               joelwembo/prodxcloud-engine-django:${{ github.sha }}
+#               ghcr.io/joelwembo/prodxcloud-engine-django:${{ github.sha }}
 #             # build on feature branches, push only on main branch
 #             push: ${{ github.ref == 'refs/heads/master' }}
   

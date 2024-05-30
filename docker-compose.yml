@@ -1,8 +1,8 @@
 version: "3.9"
 services:
   web:
-    image: joelwembo/cloudapp-django-web:latest
-    container_name: cloudapp-django-web
+    image: joelwembo/prodxcloud-django-web:latest
+    container_name: prodxcloud-django-web
     env_file: .env
     restart: always
     build:
@@ -15,7 +15,7 @@ services:
     #   - POSTGRES_NAME=DB2
     #   - POSTGRES_USER=postgres
     #   - POSTGRES_PASS=postgres
-    #   - POSTGRES_HOST=cloudapp-django-postgresdb
+    #   - POSTGRES_HOST=prodxcloud-django-postgresdb
     #   - POSTGRES_PORT=5432  
     command:
       - /bin/sh
@@ -31,7 +31,7 @@ services:
     volumes:
        - appdata:/app
     depends_on:
-      - cloudapp-django-postgresdb
+      - prodxcloud-django-postgresdb
       # - redis 
     # deploy:
     #   resources:
@@ -42,7 +42,7 @@ services:
     #       cpus: '0.0001'
     #       memory: 20M 
   # celery:
-  #   container_name: cloudapp-django-celery
+  #   container_name: prodxcloud-django-celery
   #   build: .
   #   command: 
   #      - /bin/sh
@@ -69,7 +69,7 @@ services:
   #     - redis
   # redis:
   #     image: "redis:alpine"
-  #     container_name: cloudapp-django-redis
+  #     container_name: prodxcloud-django-redis
   #     ports:
   #       - '6379:6379'
   #     expose:
@@ -78,10 +78,10 @@ services:
   #         - redisDB:/data
   #     # networks:
   #     #     - db_network  #
-  cloudapp-django-postgresdb:
+  prodxcloud-django-postgresdb:
     restart: always
     image: postgres:latest
-    container_name: cloudapp-django-postgresdb
+    container_name: prodxcloud-django-postgresdb
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
@@ -99,9 +99,9 @@ services:
   pgadmin:
         restart: always
         image: dpage/pgadmin4
-        container_name: cloudapp-fintech-pgadmin 
+        container_name: prodxcloud-pgadmin 
         # depends_on:
-        #   - cloudapp-django-postgresdb
+        #   - prodxcloud-django-postgresdb
         ports:
           - "5051:80"
         environment:

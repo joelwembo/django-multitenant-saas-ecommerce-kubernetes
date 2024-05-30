@@ -43,7 +43,7 @@ pipeline{
                 steps  {
                     // sh 'docker-compose down'
                     // sh 'docker-compose build --no-cache'
-                    sh 'docker build -t joelwembo/cloudapp-django-web:latest --no-cache .'
+                    sh 'docker build -t joelwembo/prodxcloud-django-web:latest --no-cache .'
                     }
             }
             stage('Login') {
@@ -55,15 +55,15 @@ pipeline{
 
             stage('Trivy Scan') {
                 steps {
-                    sh 'trivy image joelwembo/cloudapp-django-web:latest'
+                    sh 'trivy image joelwembo/prodxcloud-django-web:latest'
                 }
             }
 
            stage('Docker Push') {
                 steps {
                     sh 'docker images'
-                    sh 'docker images --filter "reference=cloudapp-django-web*"' 
-                    sh 'docker push joelwembo/cloudapp-django-web:latest'
+                    sh 'docker images --filter "reference=prodxcloud-django-web*"' 
+                    sh 'docker push joelwembo/prodxcloud-django-web:latest'
                 }
             }
             stage('Run the Application'){
@@ -85,13 +85,13 @@ pipeline{
         //     sh 'kubectl config use-context minikube'
         //     sh 'kubectl cluster-info'
         //     dir('deployments/k8s') {
-        //       sh 'kubectl delete namespace cloudapp-django-web'
-        //       sh 'kubectl create namespace cloudapp-django-web'
-        //       sh 'kubectl config set-context --current --namespace=cloudapp-django-web'
+        //       sh 'kubectl delete namespace prodxcloud-django-web'
+        //       sh 'kubectl create namespace prodxcloud-django-web'
+        //       sh 'kubectl config set-context --current --namespace=prodxcloud-django-web'
         //       sh 'kubectl apply -f deployment.yaml'
         //     }    
         //     sh 'kubectl get services && kubectl get pods'
-        //     sh 'minikube service cloudapp-django-web -n  cloudapp-django-web &'
+        //     sh 'minikube service prodxcloud-django-web -n  prodxcloud-django-web &'
         //     sh 'exit 0'
         //    }
         //  } 
