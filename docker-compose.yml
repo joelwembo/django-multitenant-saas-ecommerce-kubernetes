@@ -105,7 +105,7 @@ services:
         ports:
           - "5051:80"
         environment:
-          PGADMIN_DEFAULT_EMAIL: 19718580.dev1@protonmail.com
+          PGADMIN_DEFAULT_EMAIL: joelwembo@outlook.com
           PGADMIN_DEFAULT_PASSWORD: postgres   
           PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'False'
           PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: 'False'
