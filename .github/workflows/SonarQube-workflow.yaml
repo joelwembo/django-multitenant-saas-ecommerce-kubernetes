@@ -23,7 +23,7 @@ jobs:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-              - X
+              -X
               -Dsonar.organization=joelwembo
               -Dsonar.projectKey=joelwembo_django-multitenant-saas-ecommerce-kubernetes
               -Dsonar.python.coverage.reportPaths=coverage.xml
