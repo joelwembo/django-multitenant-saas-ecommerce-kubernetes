@@ -30,8 +30,8 @@ services:
       - web_network
     volumes:
        - appdata:/app
-    depends_on:
-      - prodxcloud-django-postgresdb
+    # depends_on:
+    #   - prodxcloud-django-postgresdb
       # - redis 
     # deploy:
     #   resources:
@@ -78,44 +78,44 @@ services:
   #         - redisDB:/data
   #     # networks:
   #     #     - db_network  #
-  prodxcloud-django-postgresdb:
-    restart: always
-    image: postgres:latest
-    container_name: prodxcloud-django-postgresdb
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=DB2
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_PORT=5432
-      - "POSTGRES_HOST_AUTH_METHOD=trust"
-    expose:
-       - "5432"
-    ports:
-       - "5432:5432"
-    # networks:
-    #    - data_network   
-  pgadmin:
-        restart: always
-        image: dpage/pgadmin4
-        container_name: prodxcloud-pgadmin 
-        # depends_on:
-        #   - prodxcloud-django-postgresdb
-        ports:
-          - "5051:80"
-        environment:
-          PGADMIN_DEFAULT_EMAIL: joelwembo@outlook.com
-          PGADMIN_DEFAULT_PASSWORD: postgres   
-          PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'False'
-          PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: 'False'
+  # prodxcloud-django-postgresdb:
+  #   restart: always
+  #   image: postgres:latest
+  #   container_name: prodxcloud-django-postgresdb
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
+  #   environment:
+  #     - POSTGRES_DB=DB2
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #     - POSTGRES_PORT=5432
+  #     - "POSTGRES_HOST_AUTH_METHOD=trust"
+  #   expose:
+  #      - "5432"
+  #   ports:
+  #      - "5432:5432"
+  #   # networks:
+  #   #    - data_network   
+  # pgadmin:
+  #       restart: always
+  #       image: dpage/pgadmin4
+  #       container_name: prodxcloud-pgadmin 
+  #       # depends_on:
+  #       #   - prodxcloud-django-postgresdb
+  #       ports:
+  #         - "5051:80"
+  #       environment:
+  #         PGADMIN_DEFAULT_EMAIL: joelwembo@outlook.com
+  #         PGADMIN_DEFAULT_PASSWORD: postgres   
+  #         PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'False'
+  #         PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: 'False'
             
 
 networks:
   web_network:
     driver: bridge
 volumes:
-  pgdata:
+  # pgdata:
   # redisDB:
   appdata:
    driver: local
