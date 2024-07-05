@@ -36,3 +36,4 @@ django-data-browser
 django-extensions
 django-debug-toolbar-template-timings
 django-countries
+gunicorn

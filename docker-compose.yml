@@ -115,9 +115,7 @@ networks:
   web_network:
     driver: bridge
 volumes:
-  # pgdata:
+  pgdata:
   # redisDB:
   appdata:
    driver: local
-
-  
